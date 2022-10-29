@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import HomeView from '../views/HomeView.vue';
 
 const routes = [
   {
@@ -6,12 +7,22 @@ const routes = [
     name: 'home',
     component: HomeView,
   },
-  // {
-  //   path: '/auth',
-  //   name: 'auth',
-  //   component: () =>
-  //     import(/* webpackChunkName: "about" */ '../views/Auth/AuthHome.vue'),
-  // },
+  {
+    path: '/challenges',
+    name: 'challenges',
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ '../views/Challenges/AllChallenges.vue'
+      ),
+  },
+  {
+    path: '/add/challenges',
+    name: 'add-challenges',
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ '../views/Challenges/AddChallenge.vue'
+      ),
+  },
 ];
 
 const router = createRouter({

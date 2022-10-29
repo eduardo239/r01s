@@ -1,18 +1,20 @@
 <script setup>
 import { auth } from './firebaseConfig';
-import { mapActions } from 'pinia';
-import { useChallenge } from './stores/challenges';
+import { useChallengeStore } from './stores/challenges';
 import { onMounted } from 'vue';
-import { NLayout } from 'naive-ui';
-import MainMenu from './components/menu/MainMenu';
+import { NLayout, NConfigProvider } from 'naive-ui';
+import MainMenu from './components/ui/MainMenu.vue';
 
 import hljs from 'highlight.js/lib/core';
 import javascript from 'highlight.js/lib/languages/javascript';
 
 hljs.registerLanguage('javascript', javascript);
 
+const challenge = useChallengeStore();
+console.log(challenge);
+
 onMounted(() => {
-  console.log('moiunted');
+  console.log('mounted');
 });
 </script>
 
