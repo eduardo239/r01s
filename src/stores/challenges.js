@@ -23,7 +23,7 @@ export const useChallengeStore = defineStore('challenge', () => {
 
   // actions
   async function postNewChallenge(data) {
-    const payload = data;
+    const payload = { ...data, updated_at: new Date(), created_at: new Date() };
     try {
       loading.value = false;
       await axios.post(uri.API, payload);

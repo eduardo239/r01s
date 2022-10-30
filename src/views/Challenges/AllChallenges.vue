@@ -14,6 +14,7 @@ onMounted(() => {
   <n-list
     hoverable
     clickable
+    bordered
     v-for="ch in challenge.challenges"
     :key="ch.id"
     style="margin-bottom: 0.5rem"

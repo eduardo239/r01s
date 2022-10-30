@@ -1,6 +1,7 @@
 <script setup>
-import { onMounted, onUnmounted, ref, watch } from 'vue';
-import { useRoute } from 'vue-router';
+import { onMounted, ref, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { useUserStore } from '../../stores/user';
 import { useChallengeStore } from '../../stores/challenges';
 import ChallengeHeader from '../../components/challenge/ChallengeHeader.vue';
 import ChallengeCode from '../../components/challenge/ChallengeCode.vue';
@@ -8,7 +9,10 @@ import ChallengeForm from '../../components/challenge/ChallengeForm.vue';
 import AlertMessage from '../../components/ui/AlertMessage.vue';
 
 const challenge = useChallengeStore();
+const user = useUserStore();
+
 const route = useRoute();
+const router = useRouter();
 
 const isPlaying = ref(true);
 const cid = ref(null);
@@ -40,6 +44,8 @@ onMounted(() => {
     cid.value = route.params.cid;
     challenge.getChallengeById(cid.value);
   }
+  // verifica se o usuario esta logado
+  if (!user.isLoggedIn) router.push('/auth');
 });
 
 const saveUserAnswer = (data) => {

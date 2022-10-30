@@ -117,6 +117,41 @@
       "language": "JAVASCRIPT",
       "difficulty": 6,
       "id": 8
+    },
+    {
+      "question": "The element to collect and validate data?",
+      "description": "If you want to apply required rule for.",
+      "duration": 22,
+      "answers": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "language": "JAVASCRIPT",
+      "code": "123",
+      "correct": "2",
+      "id": 9
+    },
+    {
+      "question": "The element to collect and validate data?",
+      "description": "If you want to apply required rule for.",
+      "duration": 10,
+      "answers": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "language": "JAVASCRIPT",
+      "difficulty": 2,
+      "correct": "3",
+      "code": "3333",
+      "updated_at": "2022-10-30T14:59:50.563Z",
+      "created_at": "2022-10-30T14:59:50.564Z",
+      "id": 10
     }
   ]
 }

@@ -13,8 +13,10 @@ import {
 } from 'naive-ui';
 import { useChallengeStore } from '../../stores/challenges';
 import { useRoute, useRouter } from 'vue-router';
+import { useUserStore } from '../../stores/user';
 
 const challenge = useChallengeStore();
+const user = useUserStore();
 const route = useRoute();
 const router = useRouter();
 
@@ -75,8 +77,13 @@ const goToChallenge = () => {
               <n-button>back</n-button>
             </router-link>
 
-            <n-button @click="goToChallenge" type="success"
-              >Start Test</n-button
+            <n-button
+              @click="goToChallenge"
+              type="success"
+              :disabled="!user.isLoggedIn"
+              >{{
+                !user.isLoggedIn ? 'You need to be registred' : 'Start Test Now'
+              }}</n-button
             >
             <!-- <n-button
               @click="() => goToChallenge()"

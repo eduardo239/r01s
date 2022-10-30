@@ -39,7 +39,7 @@ const count = ref(0);
       <!--  -->
       <router-link v-if="user.isLoggedIn" to="/">
         <n-button text type="primary" @click="user.logOutFirebase">
-          Exit
+          Logout
         </n-button>
       </router-link>
       <!--  -->
