@@ -14,6 +14,8 @@ const isPlaying = ref(true);
 const cid = ref(null);
 const timer = ref(1000);
 
+const message = ref({ type: '', message: '' });
+
 const countDowntimer = () => {
   if (timer.value > 0 && challenge.challenge && isPlaying.value) {
     setTimeout(() => {
@@ -43,19 +45,26 @@ onMounted(() => {
 const saveUserAnswer = (data) => {
   const userAnswer = data.value;
   isPlaying.value = false;
-  // constoi o model
-  // this.isPlaying = false;
-  // if (this.user) {
-  // const uid = this.user.getUser.uid;
-  // const cid = this.$route.params.challengeId;
-  // const correct = data.alternative === this.course.course.correct;
-  // const answer = data.alternative;
-  // const difficulty = this.course.course.difficulty || 1;
-  // const duration = this.duration;
-  // const points = correct ? duration * difficulty : 0;
-  // const data = { uid, cid, correct, answer, points, difficulty, duration };
-  // this.user.postNewAnswer(data);
-  // }
+  const timeLeft = timer.value;
+  const correct = userAnswer.alternative === challenge.challenge.correct;
+  const payload = {
+    uid: 'uid',
+    cid: 'cid',
+    correct,
+    points: correct ? timeLeft * challenge.challenge.difficulty : 0,
+  };
+  console.log(payload);
+
+  message.value = {
+    type: 'success',
+    message: `Congratulations, you got the answer right. You got ${payload.points} points.`,
+  };
+
+  // message.value = {
+  //   type: 'error',
+  //   message: 'Sorry, but the answer is incorrect.',
+  // };
+  // user.postNewAnswer(payload)
 };
 </script>
 
@@ -81,7 +90,7 @@ const saveUserAnswer = (data) => {
       >
       </challenge-form>
 
-      <alert-message />
+      <alert-message v-if="message.message" :message="message" />
     </n-card>
 
     <!-- not found -->

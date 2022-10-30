@@ -44,8 +44,9 @@ a {text-decoration: none;}
 .challenge-alternatives {
   display: block;
 }
+
 .challenge-alternative {
   width: 100%;
   border: 1px dashed var(--color-dark2);
-  padding: 1rem;
+  padding: .5rem 1rem;
   }
