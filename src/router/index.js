@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
+import UserHome from '../views/User/UserHome.vue';
+import UserStats from '../views/User/UserStats.vue';
+import UserEdit from '../views/User/UserEdit.vue';
 
 const routes = [
   {
@@ -20,7 +23,15 @@ const routes = [
     name: 'add-challenges',
     component: () =>
       import(
-        /* webpackChunkName: "about" */ '../views/Challenges/AddChallenge.vue'
+        /* webpackChunkName: "about" */ '../views/Challenges/Admin/AddChallenge.vue'
+      ),
+  },
+  {
+    path: '/all/challenges',
+    name: 'all-challenges',
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ '../views/Challenges/Admin/AllChallenges.vue'
       ),
   },
   {
@@ -41,9 +52,20 @@ const routes = [
   },
   {
     path: '/profile/:uid',
-    name: 'profile-uid',
-    component: () =>
-      import(/* webpackChunkName: "about" */ '../views/User/UserProfile.vue'),
+    name: 'user-stats',
+    component: UserHome,
+    children: [
+      {
+        path: '/profile/:uid/edit',
+        name: 'user-edit',
+        component: UserEdit,
+      },
+      {
+        path: '/profile/:uid/stats',
+        name: 'user-stats',
+        component: UserStats,
+      },
+    ],
   },
   {
     path: '/auth',

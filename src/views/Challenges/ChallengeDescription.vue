@@ -41,28 +41,32 @@ const goToChallenge = () => {
             <n-list-item
               ><n-p>
                 Difficulty:
+
                 <n-text type="warning" strong>
-                  {{ challenge.challenge.difficulty }}
+                  {{ challenge.challenge.difficulty || '---' }}
                 </n-text>
               </n-p>
             </n-list-item>
             <n-list-item
               ><n-p>
                 Language:
-                <n-text type="error" strong>{{
-                  challenge.challenge.language
+                <n-text type="warning" strong>{{
+                  challenge.challenge.language || '---'
                 }}</n-text>
               </n-p>
             </n-list-item>
             <n-list-item
               ><n-p> ID: {{ challenge.challenge.id }} </n-p>
             </n-list-item>
-            <!-- <n-list-item>
+            <n-list-item>
               <n-p>
                 Updated:
-                {{ new Date(challenge.updated_at).toLocaleString() }}
+                {{
+                  new Date(challenge.challenge.updated_at).toLocaleString() ||
+                  '---'
+                }}
               </n-p>
-            </n-list-item> -->
+            </n-list-item>
 
             <!-- <n-p>
               Finished:

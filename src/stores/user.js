@@ -85,6 +85,11 @@ export const useUserStore = defineStore('user', () => {
     }
   }
 
+  // update user
+  async function updateUserFirebase({ displayName, email, photoURL }) {
+    return 1;
+  }
+
   // fetch user on refresh
   async function fetchUserFirebase(_user) {
     if (_user) user.value = _user;
@@ -111,6 +116,7 @@ export const useUserStore = defineStore('user', () => {
     signUpFirebase,
     logOutFirebase,
     fetchUserFirebase,
+    updateUserFirebase,
     resetError,
   };
 });

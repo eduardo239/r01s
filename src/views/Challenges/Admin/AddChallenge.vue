@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import {
   NButton,
   NForm,
@@ -11,16 +11,27 @@ import {
   NH2,
   NP,
 } from 'naive-ui';
-import { ALL_LANGS } from '../../helpers/constants';
-import { useChallengeStore } from '../../stores/challenges';
+import { ALL_LANGS } from '../../../helpers/constants';
+import { useChallengeStore } from '../../../stores/challenges';
+import { useUserStore } from '../../../stores/user';
+import { useRouter } from 'vue-router';
+
+const user = useUserStore();
+
+const router = useRouter();
 
 const formRef = ref(null);
 const challenge = useChallengeStore();
+
 const model = ref({
   question: 'The element to collect and validate data?',
   description: 'If you want to apply required rule for.',
   duration: 10,
   answers: ['1', '2', '3', '4', '5'],
+});
+
+onMounted(() => {
+  if (!user.isLoggedIn) router.push('/auth');
 });
 </script>
 
@@ -116,8 +127,8 @@ const model = ref({
           placeholder="Insert the code here ....."
           type="textarea"
           :autosize="{
-            minRows: 10,
-            maxRows: 400,
+            minRows: 4,
+            maxRows: 20,
           }"
         />
       </n-form-item-gi>
@@ -129,8 +140,14 @@ const model = ref({
       </n-form-item-gi>
       <!--  -->
       <n-gi :span="24">
-        <n-button type="primary" @click="challenge.postNewChallenge(model)">
-          Save new Challenge!
+        <n-button
+          :disabled="challenge.loading"
+          :loading="challenge.loading"
+          type="primary"
+          strong
+          @click="challenge.postNewChallenge(model)"
+        >
+          Add new Challenge
         </n-button>
       </n-gi>
       <!--  -->

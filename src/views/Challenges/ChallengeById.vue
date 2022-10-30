@@ -62,7 +62,7 @@ const saveUserAnswer = (data) => {
   console.log(payload);
 
   message.value = {
-    type: 'success',
+    type: payload.correct ? 'success' : 'error',
     message: `Congratulations, you got the answer right. You got ${payload.points} points.`,
   };
 

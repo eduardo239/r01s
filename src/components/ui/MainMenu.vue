@@ -2,11 +2,9 @@
 import { ref } from 'vue';
 import { NButton, NSpace, NAvatar } from 'naive-ui';
 import { useUserStore } from '../../stores/user';
+import { URI_DEFAULT_AVATAR } from '../../helpers/constants';
 import logo_c from '../../assets/logo/png/logo-no-background_c.png';
 
-const default_photo = ref(
-  'https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg'
-);
 const user = useUserStore();
 
 const count = ref(0);
@@ -24,8 +22,12 @@ const count = ref(0);
         <n-button text type="primary"> CHALLENGES </n-button>
       </router-link>
       <!--  -->
-      <router-link to="/add/challenges">
+      <router-link to="/add/challenges" v-if="user.isLoggedIn">
         <n-button text type="primary"> ADD </n-button>
+      </router-link>
+      <!--  -->
+      <router-link to="/all/challenges" v-if="user.isLoggedIn">
+        <n-button text type="primary"> ALL </n-button>
       </router-link>
       <!--  -->
     </n-space>
@@ -44,8 +46,15 @@ const count = ref(0);
       </router-link>
       <!--  -->
 
-      <router-link v-if="user.isLoggedIn" :to="`/profile/${user.user.uid}`">
-        <n-avatar round size="small" :src="user.photoURL || default_photo" />
+      <router-link
+        v-if="user.isLoggedIn"
+        :to="`/profile/${user.user.uid}/stats`"
+      >
+        <n-avatar
+          round
+          size="small"
+          :src="user.photoURL || URI_DEFAULT_AVATAR"
+        />
       </router-link>
     </n-space>
   </n-space>

@@ -36,7 +36,7 @@ watch(user, (newValue) => {
         </n-space>
 
         <!--  -->
-      </n-card></n-layout
-    ></n-space
-  >
+      </n-card>
+    </n-layout>
+  </n-space>
 </template>
