@@ -73,6 +73,10 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/Auth/AuthHome.vue'),
   },
+  {
+    path: '/*',
+    component: 404,
+  },
 ];
 
 const router = createRouter({
