@@ -1,0 +1,73 @@
+{
+  "challenges": [
+    {
+      "question": "The element to collect and validate data?",
+      "description": "If you want to apply required rule for.",
+      "duration": 10,
+      "answers": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "id": 1
+    },
+    {
+      "question": "The element to collect and validate data?",
+      "description": "If you want to apply required rule for.",
+      "duration": 10,
+      "answers": [
+        "s",
+        "sd",
+        "3f",
+        "23",
+        "a"
+      ],
+      "id": 2
+    },
+    {
+      "question": "The element to collect and validate data?",
+      "description": "If you want to apply required rule for.",
+      "duration": 10,
+      "answers": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "code": "const d = 123;\nconst d = () => {\n    return 1;\n}",
+      "language": "JAVASCRIPT",
+      "id": 3
+    },
+    {
+      "question": "-The element to collect and validate data?",
+      "description": "-If you want to apply required rule for.",
+      "duration": 54,
+      "answers": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "code": "x = 123\ny = 432\nprint(x + y)",
+      "language": "PYTHON",
+      "difficulty": 5,
+      "id": 4
+    },
+    {
+      "question": "The element to collect and validate data?",
+      "description": "If you want to apply required rule for.",
+      "duration": 10,
+      "answers": [
+        "3",
+        "4",
+        "5"
+      ],
+      "code": "12312",
+      "id": 5
+    }
+  ]
+}

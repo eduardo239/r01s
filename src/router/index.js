@@ -23,6 +23,14 @@ const routes = [
         /* webpackChunkName: "about" */ '../views/Challenges/AddChallenge.vue'
       ),
   },
+  {
+    path: '/profile/:uid',
+    name: 'profile-uid',
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ '../views/Profile/UserProfile.vue'
+      ),
+  },
 ];
 
 const router = createRouter({
