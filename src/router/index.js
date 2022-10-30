@@ -24,6 +24,22 @@ const routes = [
       ),
   },
   {
+    path: '/challenge/:cid',
+    name: 'challenge-by-id',
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ '../views/Challenges/ChallengeById.vue'
+      ),
+  },
+  {
+    path: '/challenge-description/:cid',
+    name: 'challenge-description',
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ '../views/Challenges/ChallengeDescription.vue'
+      ),
+  },
+  {
     path: '/profile/:uid',
     name: 'profile-uid',
     component: () =>

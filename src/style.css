@@ -31,4 +31,21 @@ body{
 
 a {text-decoration: none;}
 
-.menu a {display: .5rem; margin-left: 0.5rem;}
+.menu {padding: 0 1rem 1rem}
+.menu a {display: .5rem; margin-left: 0.5rem; }
+
+.code-container {
+  padding: 1rem;
+  border-left: 2px solid var(--color-primary);
+  background-color: var(--color-dark);
+}
+
+
+.challenge-alternatives {
+  display: block;
+}
+.challenge-alternative {
+  width: 100%;
+  border: 1px dashed var(--color-dark2);
+  padding: 1rem;
+  }

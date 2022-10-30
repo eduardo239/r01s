@@ -6,7 +6,7 @@ const count = ref(0);
 </script>
 
 <template>
-  <n-space class="main-menu" justify="space-between" align="center">
+  <n-space class="menu" justify="space-between" align="center">
     <n-space>
       <!--  -->
       <router-link to="/">

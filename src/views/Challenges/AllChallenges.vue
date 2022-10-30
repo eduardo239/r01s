@@ -34,7 +34,9 @@ onMounted(() => {
         {{ ch.description || '--' }}
       </n-thing>
       <template #suffix>
-        <n-button type="success">View More</n-button>
+        <router-link :to="`/challenge-description/${ch.id}`">
+          <n-button type="success">View More</n-button>
+        </router-link>
       </template>
     </n-list-item>
   </n-list>

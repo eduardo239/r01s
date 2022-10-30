@@ -10,7 +10,6 @@ const uri = {
       ? URI_DB_CHALLENGES
       : URI_DB_CHALLENGES,
 };
-console.log(uri);
 
 export const useChallengeStore = defineStore('challenge', () => {
   // state
@@ -39,20 +38,32 @@ export const useChallengeStore = defineStore('challenge', () => {
     try {
       loading.value = false;
       const data = await axios.get(uri.API);
-      challenges.value = data.data;
+      challenges.value = data.data.reverse();
     } catch (error) {
       // set new error
     } finally {
       loading.value = true;
     }
   }
-
+  // get by id
+  async function getChallengeById(cid) {
+    try {
+      loading.value = false;
+      const data = await axios.get(uri.API + cid);
+      challenge.value = data.data;
+    } catch (error) {
+      // set new error
+    } finally {
+      loading.value = true;
+    }
+  }
   return {
     challenge,
     challenges,
     getChallenge,
     postNewChallenge,
     getAllChallenges,
+    getChallengeById,
     error,
     loading,
   };

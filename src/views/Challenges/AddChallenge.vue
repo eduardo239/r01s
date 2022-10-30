@@ -69,15 +69,7 @@ const model = ref({
           clearable
         />
       </n-form-item-gi>
-      <!--  -->
-      <n-form-item-gi :span="12" label="Insert the answer here" path="answers">
-        <n-dynamic-input
-          v-model:value="model.answers"
-          placeholder="Please type here"
-          :min="3"
-          :max="5"
-        />
-      </n-form-item-gi>
+
       <!--  -->
       <n-form-item-gi
         :span="12"
@@ -96,6 +88,28 @@ const model = ref({
         </n-space>
       </n-form-item-gi>
       <!--  -->
+      <n-form-item-gi :span="12" label="Select the right answer" path="correct">
+        <n-select
+          v-model:value="model.correct"
+          placeholder="Select the Language"
+          :options="
+            model.answers.map((v) => ({
+              label: v,
+              value: v,
+            }))
+          "
+        />
+      </n-form-item-gi>
+      <!--  -->
+      <n-form-item-gi :span="12" label="Insert the answer here" path="answers">
+        <n-dynamic-input
+          v-model:value="model.answers"
+          placeholder="Please type here"
+          :min="3"
+          :max="5"
+        />
+      </n-form-item-gi>
+      <!--  -->
       <n-form-item-gi :span="12" label="Insert the code here" path="code">
         <n-input
           v-model:value="model.code"
@@ -108,20 +122,19 @@ const model = ref({
         />
       </n-form-item-gi>
       <!--  -->
-      <n-form-item-gi :span="12" label="Code" path="liveCode">
-        <n-space style="overflow: auto; padding: 1rem">
+      <n-form-item-gi :span="24" label="Code" path="liveCode">
+        <n-space style="overflow: auto" class="code-container">
           <n-code class="code" :code="model.code" :language="model.language" />
         </n-space>
       </n-form-item-gi>
       <!--  -->
       <n-gi :span="24">
         <n-button type="primary" @click="challenge.postNewChallenge(model)">
-          Salvar
+          Save new Challenge!
         </n-button>
       </n-gi>
       <!--  -->
     </n-grid>
     <!--  -->
   </n-form>
-  {{ model }}
 </template>

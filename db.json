@@ -68,6 +68,55 @@
       ],
       "code": "12312",
       "id": 5
+    },
+    {
+      "question": "The element to collect and validate data?",
+      "description": "If you want to apply required rule for.",
+      "duration": 10,
+      "answers": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "difficulty": 5,
+      "code": "21123",
+      "language": "PYTHON",
+      "id": 6
+    },
+    {
+      "question": "123",
+      "description": "123",
+      "duration": 43,
+      "answers": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "difficulty": 2,
+      "language": "JAVASCRIPT",
+      "code": "33334",
+      "id": 7
+    },
+    {
+      "question": "Qual é o resultado?",
+      "description": "Soma de números",
+      "duration": 46,
+      "answers": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correct": "3",
+      "code": "let x = 1\nlet y = 2\nconsole.log(x+1)",
+      "language": "JAVASCRIPT",
+      "difficulty": 6,
+      "id": 8
     }
   ]
 }
