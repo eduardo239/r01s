@@ -43,9 +43,13 @@ const routes = [
     path: '/profile/:uid',
     name: 'profile-uid',
     component: () =>
-      import(
-        /* webpackChunkName: "about" */ '../views/Profile/UserProfile.vue'
-      ),
+      import(/* webpackChunkName: "about" */ '../views/User/UserProfile.vue'),
+  },
+  {
+    path: '/auth',
+    name: 'auth',
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/Auth/AuthHome.vue'),
   },
 ];
 

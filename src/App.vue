@@ -4,6 +4,8 @@ import { useChallengeStore } from './stores/challenges';
 import { useThemeStore } from './stores/theme';
 import { onMounted } from 'vue';
 import { NLayout, NConfigProvider, darkTheme } from 'naive-ui';
+import { useUserStore } from './stores/user';
+
 import MainMenu from './components/ui/MainMenu.vue';
 
 import hljs from 'highlight.js/lib/core';
@@ -16,8 +18,12 @@ hljs.registerLanguage('python', python);
 const challenge = useChallengeStore();
 const theme = useThemeStore();
 
+const user = useUserStore();
+
 onMounted(() => {
-  console.log('started');
+  auth.onAuthStateChanged((_user) => {
+    if (_user) user.fetchUserFirebase(_user);
+  });
 });
 </script>
 
