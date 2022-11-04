@@ -16,11 +16,17 @@ export const useChallengeStore = defineStore('challenge', () => {
   // state
   const challenge = ref(null);
   const challenges = ref([]);
+  const challegensPagination = ref([]);
   const error = ref({ status: false, message: '', type: '' });
   const loading = ref(false);
 
   // getters
-  const getChallenge = computed(() => challenge);
+  const getTotalChallenges = computed(
+    () => challenges ?? challenges.value.length
+  );
+  const getTotalChallengesPagination = computed(
+    () => challegensPagination && challegensPagination.value.length
+  );
 
   // actions
   async function postNewChallenge(data) {
@@ -71,7 +77,6 @@ export const useChallengeStore = defineStore('challenge', () => {
   // delete challenge
   async function deleteChallengeById(cid) {
     loading.value = true;
-
     try {
       const { status } = await axios.delete(uri.API + cid);
       const ok = status.toString().startsWith('2');
@@ -81,13 +86,33 @@ export const useChallengeStore = defineStore('challenge', () => {
     } finally {
       loading.value = false;
     }
-
     return false;
   }
+
+  // pagination
+  async function getAllPaginationChallenges({ page, _limit }) {
+    loading.value = true;
+
+    try {
+      const _uri = `${uri.API}?_page=${page}&_limit=${_limit}`;
+      const { status, data } = await axios.get(_uri);
+      const ok = status.toString().startsWith('2');
+      if (ok) challegensPagination.value = data;
+    } catch (error) {
+      // set new error
+    } finally {
+      loading.value = false;
+    }
+    return false;
+  }
+
   return {
     challenge,
     challenges,
-    getChallenge,
+    challegensPagination,
+    getTotalChallenges,
+    getAllPaginationChallenges,
+    getTotalChallengesPagination,
     postNewChallenge,
     getAllChallenges,
     getChallengeById,

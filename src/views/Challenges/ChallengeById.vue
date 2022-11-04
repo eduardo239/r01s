@@ -59,7 +59,6 @@ const saveUserAnswer = (data) => {
     correct,
     points: correct ? timeLeft * challenge.challenge.difficulty : 0,
   };
-  console.log(payload);
 
   message.value = {
     type: payload.correct ? 'success' : 'error',

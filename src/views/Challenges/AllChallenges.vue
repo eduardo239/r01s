@@ -1,23 +1,28 @@
 <script setup>
-import { onMounted, ref } from 'vue';
-import { NButton, NList, NThing, NListItem, NTag } from 'naive-ui';
+import { computed, onMounted, ref } from 'vue';
+import { NButton, NList, NThing, NListItem, NTag, NPagination } from 'naive-ui';
 import { useChallengeStore } from '../../stores/challenges';
 
 const challenge = useChallengeStore();
 
+const page = ref(1);
+const limit = ref(3);
+
 onMounted(() => {
   challenge.getAllChallenges();
+
+  // pagination
+  // const _pagination = { page: page.value, _limit: limit.value };
+  // challenge.getAllPaginationChallenges(_pagination);
 });
 </script>
 
 <template>
   <n-list
-    hoverable
-    clickable
     bordered
     v-for="ch in challenge.challenges"
     :key="ch.id"
-    style="margin-bottom: 0.5rem"
+    style="margin-bottom: 0.25rem"
   >
     <n-list-item>
       <n-thing :title="ch.question">
@@ -41,4 +46,15 @@ onMounted(() => {
       </template>
     </n-list-item>
   </n-list>
+
+  <!-- pagination -->
+  <!-- <n-space justify="center" style="padding: 1rem">
+    <n-pagination
+      size="large"
+      v-model:page="page"
+      :page-count="totalPages"
+      :prev="prev"
+      :next="next"
+    />
+  </n-space> -->
 </template>

@@ -11,56 +11,6 @@
         "4",
         "5"
       ],
-      "code": "const d = 123;\nconst d = () => {\n    return 1;\n}",
-      "language": "JAVASCRIPT",
-      "id": 3
-    },
-    {
-      "question": "-The element to collect and validate data?",
-      "description": "-If you want to apply required rule for.",
-      "duration": 54,
-      "answers": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "code": "x = 123\ny = 432\nprint(x + y)",
-      "language": "PYTHON",
-      "difficulty": 5,
-      "id": 4
-    },
-    {
-      "question": "The element to collect and validate data?",
-      "description": "If you want to apply required rule for.",
-      "duration": 10,
-      "answers": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "language": "JAVASCRIPT",
-      "difficulty": 2,
-      "correct": "3",
-      "code": "3333",
-      "updated_at": "2022-10-30T14:59:50.563Z",
-      "created_at": "2022-10-30T14:59:50.564Z",
-      "id": 10
-    },
-    {
-      "question": "The element to collect and validate data?",
-      "description": "If you want to apply required rule for.",
-      "duration": 10,
-      "answers": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
       "language": "PYTHON",
       "code": "123",
       "correct": "3",
@@ -160,6 +110,25 @@
       "updated_at": "2022-10-30T18:15:21.569Z",
       "created_at": "2022-10-30T18:15:21.569Z",
       "id": "5dd9b601-8094-4f87-8f0a-39eafb789eeb"
+    },
+    {
+      "question": "The element to collect and validate data?",
+      "description": "If you want to apply required rule for.",
+      "duration": 44,
+      "answers": [
+        "123",
+        "245",
+        "365",
+        "4213",
+        "5879"
+      ],
+      "language": "JAVASCRIPT",
+      "code": "    const formRef = ref({});\n    const course = useCourseStore();\n    const user = useUserStore();\n    const page = ref(1);\n    const limit = ref(10);",
+      "correct": "4213",
+      "difficulty": 2,
+      "updated_at": "2022-11-04T19:44:49.352Z",
+      "created_at": "2022-11-04T19:44:49.352Z",
+      "id": "6b3017b6-c9ca-4513-af1b-b7bc97dfa446"
     }
   ]
 }
