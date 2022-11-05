@@ -1,12 +1,64 @@
 <script setup>
-import { ref } from 'vue';
-import { NSpace, NLayout, NCard } from 'naive-ui';
-
-const count = ref(0);
+import { NSpace, NLayout, NCard, NCarousel, NH4, NText } from 'naive-ui';
 </script>
 
 <template>
   <n-space vertical>
-    <n-layout> <n-card title="Home"> </n-card></n-layout
-  ></n-space>
+    <n-layout>
+      <n-card title="Challenge the code">
+        <n-space style="padding: 1rem 3rem">
+          <n-carousel autoplay dot-type="line">
+            <img
+              class="carousel-img"
+              src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel1.jpeg"
+            />
+            <img
+              class="carousel-img"
+              src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel2.jpeg"
+            />
+            <img
+              class="carousel-img"
+              src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel3.jpeg"
+            />
+            <img
+              class="carousel-img"
+              src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel4.jpeg"
+            />
+          </n-carousel>
+        </n-space>
+
+        <n-space style="padding: 1rem 0" vertical>
+          <n-h4>Definition of 'challenge'</n-h4>
+
+          <n-text depth="2"
+            >A challenge is something new and difficult which requires great
+            effort and determination.
+          </n-text>
+
+          <n-text depth="2" italic
+            >I like a big challenge and they don't come much bigger than
+            this.</n-text
+          >
+
+          <n-text depth="2" strong
+            >Synonyms: dare, provocation, summons to contest, wero</n-text
+          >
+
+          <router-link to="/challenges">
+            <n-button style="margin-top: 1rem" type="success"
+              >See the challenges</n-button
+            ></router-link
+          >
+        </n-space>
+      </n-card>
+    </n-layout>
+  </n-space>
 </template>
+
+<style scoped>
+.carousel-img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+}
+</style>

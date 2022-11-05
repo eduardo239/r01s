@@ -6,8 +6,6 @@ import { URI_DEFAULT_AVATAR } from '../../helpers/constants';
 import logo_c from '../../assets/logo/png/logo-no-background_c.png';
 
 const user = useUserStore();
-
-const count = ref(0);
 </script>
 
 <template>
@@ -38,12 +36,7 @@ const count = ref(0);
       <router-link to="/auth" v-if="!user.isLoggedIn">
         <n-button text type="primary"> SIGN IN </n-button>
       </router-link>
-      <!--  -->
-      <router-link v-if="user.isLoggedIn" to="/">
-        <n-button text type="primary" @click="user.logOutFirebase">
-          Logout
-        </n-button>
-      </router-link>
+
       <!--  -->
 
       <router-link

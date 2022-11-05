@@ -24,6 +24,9 @@ onMounted(() => {
   auth.onAuthStateChanged((_user) => {
     if (_user) user.fetchUserFirebase(_user);
   });
+
+  // set all challenges from db
+  challenge._getAllChallenges();
 });
 </script>
 

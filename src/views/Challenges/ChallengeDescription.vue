@@ -77,9 +77,7 @@ const goToChallenge = () => {
 
         <n-space vertical style="margin-top: 2rem">
           <n-button-group>
-            <router-link :to="`/challenges`">
-              <n-button>back</n-button>
-            </router-link>
+            <n-button @click="router.go(-1)">back</n-button>
 
             <n-button
               @click="goToChallenge"

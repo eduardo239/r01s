@@ -1,9 +1,9 @@
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
 import { URI_DB_CHALLENGES } from '../helpers/constants';
-import { v4 as uuidv4 } from 'uuid';
-import LCL_DB from '../../db.json';
+import DB_JSON from '../../db.json';
 
 const uri = {
   API:
@@ -16,19 +16,22 @@ export const useChallengeStore = defineStore('challenge', () => {
   // state
   const challenge = ref(null);
   const challenges = ref([]);
+  const challengesLimited = ref([]);
   const challegensPagination = ref([]);
+
   const error = ref({ status: false, message: '', type: '' });
   const loading = ref(false);
 
   // getters
-  const getTotalChallenges = computed(
-    () => challenges ?? challenges.value.length
+  const getTotalChallenges = computed(() =>
+    challenges ? challenges.value.length : 0
   );
   const getTotalChallengesPagination = computed(
     () => challegensPagination && challegensPagination.value.length
   );
 
   // actions
+  // save new challenge
   async function postNewChallenge(data) {
     loading.value = true;
     const updated_at = new Date();
@@ -49,12 +52,49 @@ export const useChallengeStore = defineStore('challenge', () => {
       loading.value = false;
     }
   }
+  async function _postNewChallenge(data) {
+    loading.value = true;
+    const updated_at = new Date();
+    const created_at = new Date();
+    const payload = {
+      ...data,
+      updated_at,
+      created_at,
+      id: uuidv4(),
+    };
+
+    try {
+      const alreadyExists = findByUUID(payload.id, challenges.value);
+
+      if (!alreadyExists) {
+        challenges.value.push(payload);
+      } else {
+        // set exists error
+      }
+    } catch (error) {
+      // set new error
+    } finally {
+      loading.value = false;
+    }
+  }
+
   // get all challenges
   async function getAllChallenges() {
     loading.value = true;
     try {
       const data = await axios.get(uri.API);
       challenges.value = data.data.reverse();
+    } catch (error) {
+      // set new error
+    } finally {
+      loading.value = false;
+    }
+  }
+  async function _getAllChallenges() {
+    loading.value = true;
+
+    try {
+      challenges.value = DB_JSON.challenges;
     } catch (error) {
       // set new error
     } finally {
@@ -86,7 +126,23 @@ export const useChallengeStore = defineStore('challenge', () => {
     } finally {
       loading.value = false;
     }
-    return false;
+  }
+  async function _deleteChallengeById(cid) {
+    loading.value = true;
+    try {
+      const alreadyExists = findByUUID(cid, challenges.value);
+
+      if (alreadyExists) {
+        const response = removeItemByUUID(cid, challenges.value);
+        challenges.value = response;
+      } else {
+        console.log(2);
+      }
+    } catch (error) {
+      // set new error
+    } finally {
+      loading.value = false;
+    }
   }
 
   // pagination
@@ -103,12 +159,43 @@ export const useChallengeStore = defineStore('challenge', () => {
     } finally {
       loading.value = false;
     }
+  }
+  async function _getAllPaginationChallenges({ page, _limit }) {
+    loading.value = true;
+
+    try {
+      const response = paginate(challenges.value, _limit, page);
+      challengesLimited.value = response;
+    } catch (error) {
+      // set new error
+    } finally {
+      loading.value = false;
+    }
+  }
+
+  // find by uuid
+  function findByUUID(uuid, array) {
+    for (let i = 0; i < array.length; i++) {
+      if (array[i].id === uuid) {
+        return true;
+      }
+    }
     return false;
   }
 
+  // filter array and remove
+  function removeItemByUUID(uuid, array) {
+    return array.filter((item) => item.id !== uuid);
+  }
+
+  // paginate
+  function paginate(array, limit, page) {
+    return array.slice((page - 1) * limit, page * limit);
+  }
   return {
     challenge,
     challenges,
+    challengesLimited,
     challegensPagination,
     getTotalChallenges,
     getAllPaginationChallenges,
@@ -119,5 +206,9 @@ export const useChallengeStore = defineStore('challenge', () => {
     deleteChallengeById,
     error,
     loading,
+    _postNewChallenge,
+    _getAllChallenges,
+    _deleteChallengeById,
+    _getAllPaginationChallenges,
   };
 });

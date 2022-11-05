@@ -28,15 +28,16 @@ const model = ref({
   description: 'If you want to apply required rule for.',
   duration: 10,
   answers: ['1', '2', '3', '4', '5'],
+  difficulty: 1,
 });
 
 onMounted(() => {
-  if (!user.isLoggedIn) router.push('/auth');
+  // if (!user.isLoggedIn) router.push('/auth');
 });
 </script>
 
 <template>
-  <n-space vertical>
+  <n-space vertical v-if="user.isLoggedIn">
     <n-layout>
       <n-card title="Add New Challenge">
         <n-form ref="formRef" :model="model" label-placement="top">
@@ -168,7 +169,7 @@ onMounted(() => {
                 :loading="challenge.loading"
                 type="primary"
                 strong
-                @click="challenge.postNewChallenge(model)"
+                @click="challenge._postNewChallenge(model)"
               >
                 Add new Challenge
               </n-button>
@@ -177,7 +178,14 @@ onMounted(() => {
           </n-grid>
           <!--  -->
         </n-form>
-      </n-card></n-layout
-    ></n-space
-  >
+      </n-card>
+    </n-layout>
+  </n-space>
+
+  <!-- not logged in -->
+  <n-space vertical v-else>
+    <n-layout>
+      <n-card title="You must have permission to access this page"> </n-card>
+    </n-layout>
+  </n-space>
 </template>

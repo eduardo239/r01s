@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { NButton, NList, NThing, NListItem, NTag, NPagination } from 'naive-ui';
 import { useChallengeStore } from '../../stores/challenges';
 
@@ -7,20 +7,36 @@ const challenge = useChallengeStore();
 
 const page = ref(1);
 const limit = ref(3);
+const total = ref(0);
 
 onMounted(() => {
-  challenge.getAllChallenges();
+  challenge._getAllPaginationChallenges({
+    page: page.value,
+    _limit: limit.value,
+  });
 
-  // pagination
-  // const _pagination = { page: page.value, _limit: limit.value };
-  // challenge.getAllPaginationChallenges(_pagination);
+  total.value = limit.value * page.value + 1;
 });
+
+function prev(pagination) {
+  challenge._getAllPaginationChallenges({
+    page: pagination.page,
+    _limit: limit.value,
+  });
+}
+
+function next(pagination) {
+  challenge._getAllPaginationChallenges({
+    page: pagination.page,
+    _limit: limit.value,
+  });
+}
 </script>
 
 <template>
   <n-list
     bordered
-    v-for="ch in challenge.challenges"
+    v-for="ch in challenge.challengesLimited"
     :key="ch.id"
     style="margin-bottom: 0.25rem"
   >
@@ -37,7 +53,9 @@ onMounted(() => {
             </n-tag>
           </n-space>
         </template>
-        {{ ch.description || '--' }}
+        <n-text depth="3">
+          {{ ch.description || '--' }}
+        </n-text>
       </n-thing>
       <template #suffix>
         <router-link :to="`/challenge-description/${ch.id}`">
@@ -48,13 +66,14 @@ onMounted(() => {
   </n-list>
 
   <!-- pagination -->
-  <!-- <n-space justify="center" style="padding: 1rem">
+  <n-space justify="center" style="padding: 1rem">
     <n-pagination
+      :disabled="challenge.loading"
       size="large"
       v-model:page="page"
-      :page-count="totalPages"
+      :page-count="Math.floor(challenge.getTotalChallenges / limit) + 1"
       :prev="prev"
       :next="next"
     />
-  </n-space> -->
+  </n-space>
 </template>

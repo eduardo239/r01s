@@ -12,11 +12,11 @@ const router = useRouter();
 
 const pagination = ref(true);
 
-onMounted(() => {
-  if (!user.isLoggedIn) router.push('/auth');
-});
+// onMounted(() => {
+//   challenge._getAllChallenges();
+// });
 
-watch(challenge, () => {});
+// watch(challenge, () => {});
 
 const createColumns = ({ view, remove, update }) => {
   return [
@@ -132,7 +132,7 @@ const columns = createColumns({
     router.push(`/challenge-description/${row.id}`);
   },
   remove(row) {
-    challenge.deleteChallengeById(row.id);
+    challenge._deleteChallengeById(row.id);
   },
   update(row) {
     return null;
@@ -141,7 +141,7 @@ const columns = createColumns({
 </script>
 
 <template>
-  <n-space vertical>
+  <n-space vertical v-if="user.isLoggedIn">
     <n-layout>
       <n-card title="User Profile">
         <n-data-table
@@ -151,6 +151,13 @@ const columns = createColumns({
           :bordered="false"
         />
       </n-card>
+    </n-layout>
+  </n-space>
+
+  <!-- not logged in -->
+  <n-space vertical v-else>
+    <n-layout>
+      <n-card title="You must have permission to access this page"> </n-card>
     </n-layout>
   </n-space>
 </template>
