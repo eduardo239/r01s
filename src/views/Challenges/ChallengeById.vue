@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref, watch } from 'vue';
+import { onMounted, onUnmounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useUserStore } from '../../stores/user';
 import { useChallengeStore } from '../../stores/challenges';
@@ -41,13 +41,15 @@ watch(challenge, (newValue) => {
 
 onMounted(() => {
   if (route.params) {
-    cid.value = route.params.cid;
-    challenge.getChallengeById(cid.value);
+    challenge._getChallengeById(route.params.cid);
   }
   // verifica se o usuario esta logado
   if (!user.isLoggedIn) router.push('/auth');
 });
 
+onUnmounted(() => {
+  challenge.resetChallenge();
+});
 const saveUserAnswer = (data) => {
   const userAnswer = data.value;
   isPlaying.value = false;
@@ -62,7 +64,9 @@ const saveUserAnswer = (data) => {
 
   message.value = {
     type: payload.correct ? 'success' : 'error',
-    message: `Congratulations, you got the answer right. You got ${payload.points} points.`,
+    message: payload.correct
+      ? `Congratulations, you got the answer right. You got ${payload.points} points.`
+      : `Sorry but the answer is incorrect. You got 0 points`,
   };
 
   // message.value = {

@@ -113,6 +113,17 @@ export const useChallengeStore = defineStore('challenge', () => {
       loading.value = false;
     }
   }
+  async function _getChallengeById(cid) {
+    loading.value = true;
+    try {
+      const response = filterByUUID(cid, challenges.value);
+      challenge.value = response;
+    } catch (error) {
+      // set new error
+    } finally {
+      loading.value = false;
+    }
+  }
 
   // delete challenge
   async function deleteChallengeById(cid) {
@@ -192,6 +203,22 @@ export const useChallengeStore = defineStore('challenge', () => {
   function paginate(array, limit, page) {
     return array.slice((page - 1) * limit, page * limit);
   }
+
+  // filter by uuid
+  function filterByUUID(uuid, array) {
+    for (let i = 0; i < array.length; i++) {
+      if (array[i].id === uuid) {
+        return array[i];
+      }
+    }
+    return null;
+  }
+
+  // reset
+  function resetChallenge() {
+    challenge.value = null;
+  }
+
   return {
     challenge,
     challenges,
@@ -210,5 +237,7 @@ export const useChallengeStore = defineStore('challenge', () => {
     _getAllChallenges,
     _deleteChallengeById,
     _getAllPaginationChallenges,
+    _getChallengeById,
+    resetChallenge,
   };
 });

@@ -23,7 +23,7 @@ const router = useRouter();
 onMounted(() => {
   if (route.params) {
     const cid = route.params.cid;
-    challenge.getChallengeById(cid);
+    challenge._getChallengeById(cid);
   }
 });
 
@@ -40,9 +40,19 @@ const goToChallenge = () => {
           <n-list>
             <n-list-item
               ><n-p>
+                Duration:
+
+                <n-text type="warning">
+                  {{ challenge.challenge.duration + 's' || '---' }}
+                </n-text>
+              </n-p>
+            </n-list-item>
+
+            <n-list-item
+              ><n-p>
                 Difficulty:
 
-                <n-text type="warning" strong>
+                <n-text type="warning">
                   {{ challenge.challenge.difficulty || '---' }}
                 </n-text>
               </n-p>
@@ -50,21 +60,26 @@ const goToChallenge = () => {
             <n-list-item
               ><n-p>
                 Language:
-                <n-text type="warning" strong>{{
+                <n-text type="warning">{{
                   challenge.challenge.language || '---'
                 }}</n-text>
               </n-p>
             </n-list-item>
             <n-list-item
-              ><n-p> ID: {{ challenge.challenge.id }} </n-p>
+              ><n-p>
+                ID:
+                <n-text type="warning">{{ challenge.challenge.id }} </n-text>
+              </n-p>
             </n-list-item>
             <n-list-item>
               <n-p>
                 Updated:
-                {{
-                  new Date(challenge.challenge.updated_at).toLocaleString() ||
-                  '---'
-                }}
+                <n-text type="warning">
+                  {{
+                    new Date(challenge.challenge.updated_at).toLocaleString() ||
+                    '---'
+                  }}
+                </n-text>
               </n-p>
             </n-list-item>
 

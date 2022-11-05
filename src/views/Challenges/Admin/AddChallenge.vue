@@ -24,11 +24,12 @@ const formRef = ref(null);
 const challenge = useChallengeStore();
 
 const model = ref({
-  question: 'The element to collect and validate data?',
-  description: 'If you want to apply required rule for.',
+  question: '',
+  description: '',
   duration: 10,
   answers: ['1', '2', '3', '4', '5'],
   difficulty: 1,
+  code: 'const x = 1;',
 });
 
 onMounted(() => {
@@ -42,21 +43,24 @@ onMounted(() => {
       <n-card title="Add New Challenge">
         <n-form ref="formRef" :model="model" label-placement="top">
           <n-space vertical style="margin-bottom: 2rem">
-            <n-text depth="3"
-              >Lorem ipsum dolor sit amet, consectetur adipisicing elit?</n-text
+            <n-text type="warning">
+              Fill in the data to create a new challenge</n-text
             >
           </n-space>
           <!--  -->
           <n-grid :span="24" :x-gap="24">
             <!--  -->
             <n-form-item-gi :span="12" label="Question" path="question">
-              <n-input v-model:value="model.question" placeholder="Question" />
+              <n-input
+                v-model:value="model.question"
+                placeholder="Challenge question."
+              />
             </n-form-item-gi>
             <!--  -->
             <n-form-item-gi :span="12" label="Description" path="description">
               <n-input
                 v-model:value="model.description"
-                placeholder="Description"
+                placeholder="What is the input type of the algorithm."
               />
             </n-form-item-gi>
             <!--  -->
@@ -130,7 +134,7 @@ onMounted(() => {
             <!--  -->
             <n-form-item-gi
               :span="12"
-              label="Insert the answer here"
+              label="Add alternatives here"
               path="answers"
             >
               <n-dynamic-input
@@ -153,7 +157,11 @@ onMounted(() => {
               />
             </n-form-item-gi>
             <!--  -->
-            <n-form-item-gi :span="24" label="Code" path="liveCode">
+            <n-form-item-gi
+              :span="24"
+              label="Code Live Preview"
+              path="liveCode"
+            >
               <n-space style="overflow: auto" class="code-container">
                 <n-code
                   class="code"
