@@ -1,0 +1,1 @@
+import{r as a,o as t,c as s,a as e,b as l,w as r,u as n,F as o,N as c}from"./index.e2bbc497.js";const p={__name:"AllChallenges",setup(u){return a(0),(_,f)=>(t(),s(o,null,[e(" challenges "),l(n(c),null,{default:r(()=>[e("xisto")]),_:1})],64))}};export{p as default};
