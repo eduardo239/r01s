@@ -8,6 +8,7 @@ const model = ref({
   email: 'my_email3@email.com',
   password: '123123',
   username: 'secret_user',
+  terms: true,
 });
 const formRef = ref(null);
 const user = useUserStore();

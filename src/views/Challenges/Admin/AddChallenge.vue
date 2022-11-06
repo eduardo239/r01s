@@ -8,13 +8,12 @@ import {
   NInput,
   NDynamicInput,
   NInputNumber,
-  NH2,
-  NP,
 } from 'naive-ui';
 import { ALL_LANGS } from '../../../helpers/constants';
 import { useChallengeStore } from '../../../stores/challenges';
 import { useUserStore } from '../../../stores/user';
 import { useRouter } from 'vue-router';
+import AlertMessage from '../../../components/ui/AlertMessage.vue';
 
 const user = useUserStore();
 
@@ -24,24 +23,57 @@ const formRef = ref(null);
 const challenge = useChallengeStore();
 
 const model = ref({
-  question: '',
-  description: '',
+  question: null,
+  description: null,
   duration: 10,
   answers: ['1', '2', '3', '4', '5'],
-  difficulty: 1,
+  difficulty: null,
   code: 'const x = 1;',
+  correct: null,
 });
 
-onMounted(() => {
-  // if (!user.isLoggedIn) router.push('/auth');
+const rules = ref({
+  question: {
+    required: true,
+    trigger: ['blur'],
+    message: 'Please input the question',
+  },
+  description: {
+    required: true,
+    trigger: ['blur'],
+    message: 'Please input the description',
+  },
+  language: {
+    required: true,
+    trigger: ['blur'],
+    message: 'Please input the language',
+  },
+  correct: {
+    required: true,
+    trigger: ['blur'],
+    message: 'Please input the correct answer',
+  },
+  code: {
+    required: true,
+    trigger: ['blur'],
+    message: 'Please input the code',
+  },
 });
+
+onMounted(() => {});
 </script>
 
 <template>
   <n-space vertical v-if="user.isLoggedIn">
     <n-layout>
       <n-card title="Add New Challenge">
-        <n-form ref="formRef" :model="model" label-placement="top">
+        <n-form
+          class="form-admin"
+          ref="formRef"
+          :model="model"
+          label-placement="top"
+          :rules="rules"
+        >
           <n-space vertical style="margin-bottom: 2rem">
             <n-text type="warning">
               Fill in the data to create a new challenge</n-text
@@ -186,6 +218,11 @@ onMounted(() => {
           </n-grid>
           <!--  -->
         </n-form>
+
+        <alert-message
+          v-if="challenge.error.status"
+          :message="challenge.error"
+        />
       </n-card>
     </n-layout>
   </n-space>

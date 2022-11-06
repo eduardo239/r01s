@@ -65,10 +65,10 @@ a {
   width: 20rem;
 }
 
-img {
-  display: inline-block;
-  max-width: 100%;
+.form-admin {
+  padding-bottom: 2rem;
 }
+
 .logo {
   width: 90px;
 }

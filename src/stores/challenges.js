@@ -18,16 +18,17 @@ export const useChallengeStore = defineStore('challenge', () => {
   const challenges = ref([]);
   const challengesLimited = ref([]);
   const challegensPagination = ref([]);
+  const totalChallenges = ref(0);
 
   const error = ref({ status: false, message: '', type: '' });
   const loading = ref(false);
 
   // getters
-  const getTotalChallenges = computed(() =>
-    challenges ? challenges.value.length : 0
+  const getTotalChallenges = computed(
+    () => (totalChallenges.value = challenges.value?.length)
   );
   const getTotalChallengesPagination = computed(
-    () => challegensPagination && challegensPagination.value.length
+    () => challegensPagination && challegensPagination.value?.length
   );
 
   // actions
@@ -53,28 +54,45 @@ export const useChallengeStore = defineStore('challenge', () => {
     }
   }
   async function _postNewChallenge(data) {
-    loading.value = true;
-    const updated_at = new Date();
-    const created_at = new Date();
-    const payload = {
-      ...data,
-      updated_at,
-      created_at,
-      id: uuidv4(),
-    };
+    resetError();
+    const cq = data.question;
+    const cf = data.difficulty || 1;
+    const cd = data.description;
+    const cc = data.code;
+    const ct = data.duration;
 
-    try {
-      const alreadyExists = findByUUID(payload.id, challenges.value);
+    if (cq && cf && cc && cd && ct) {
+      loading.value = true;
+      const updated_at = new Date();
+      const created_at = new Date();
+      const payload = {
+        ...data,
+        updated_at,
+        created_at,
+        id: uuidv4(),
+      };
 
-      if (!alreadyExists) {
-        challenges.value.push(payload);
-      } else {
-        // set exists error
+      try {
+        const alreadyExists = findByUUID(payload.id, challenges.value);
+
+        if (!alreadyExists) {
+          challenges.value.unshift(payload);
+        } else {
+          // set exists error
+        }
+      } catch (error) {
+        // set new error
+      } finally {
+        loading.value = false;
       }
-    } catch (error) {
-      // set new error
-    } finally {
+    } else {
       loading.value = false;
+      console.log(2);
+      error.value = {
+        status: true,
+        message: 'Please, fill in the form fields.',
+        type: 'error',
+      };
     }
   }
 
@@ -214,6 +232,9 @@ export const useChallengeStore = defineStore('challenge', () => {
     return null;
   }
 
+  function resetError() {
+    error.value = { status: false, message: '', type: '' };
+  }
   // reset
   function resetChallenge() {
     challenge.value = null;

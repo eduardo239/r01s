@@ -3,14 +3,14 @@ import { ref } from 'vue';
 import { NButton, NSpace, NAvatar } from 'naive-ui';
 import { useUserStore } from '../../stores/user';
 import { URI_DEFAULT_AVATAR } from '../../helpers/constants';
-import logo_c from '../../assets/logo/png/logo-no-background_c.png';
+import logo_c from '../../assets/logo/png/logo-no-background.png';
 
 const user = useUserStore();
 </script>
 
 <template>
   <n-space class="menu" justify="space-between" align="center">
-    <n-space align="center">
+    <n-space align="center" justify="center">
       <!--  -->
       <router-link to="/">
         <img :src="logo_c" class="logo" alt="Challenge your knowledge" />

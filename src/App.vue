@@ -22,7 +22,11 @@ const user = useUserStore();
 
 onMounted(() => {
   auth.onAuthStateChanged((_user) => {
-    if (_user) user.fetchUserFirebase(_user);
+    if (_user) {
+      user.fetchUserFirebase(_user);
+
+      user.updateUserLocalStorage(JSON.parse(localStorage.getItem('user')));
+    }
   });
 
   // set all challenges from db

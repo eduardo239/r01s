@@ -15,7 +15,6 @@ const route = useRoute();
 const router = useRouter();
 
 const isPlaying = ref(true);
-const cid = ref(null);
 const timer = ref(1000);
 
 const message = ref({ type: '', message: '' });
@@ -28,6 +27,7 @@ const countDowntimer = () => {
     }, 100);
   } else if (timer.value <= 0) {
     isPlaying.value = false;
+    timer.value = 0;
   }
 };
 
@@ -50,14 +50,16 @@ onMounted(() => {
 onUnmounted(() => {
   challenge.resetChallenge();
 });
+
 const saveUserAnswer = (data) => {
   const userAnswer = data.value;
   isPlaying.value = false;
   const timeLeft = timer.value;
   const correct = userAnswer.alternative === challenge.challenge.correct;
+  console.log(userAnswer.alternative + '===' + challenge.challenge.correct);
   const payload = {
-    uid: 'uid',
-    cid: 'cid',
+    uid: user.user.uid,
+    cid: challenge.challenge.id,
     correct,
     points: correct ? timeLeft * challenge.challenge.difficulty : 0,
   };
@@ -69,18 +71,13 @@ const saveUserAnswer = (data) => {
       : `Sorry but the answer is incorrect. You got 0 points`,
   };
 
-  // message.value = {
-  //   type: 'error',
-  //   message: 'Sorry, but the answer is incorrect.',
-  // };
-  // user.postNewAnswer(payload)
+  user.saveUserAnswer(payload);
 };
 </script>
 
 <template>
   <n-space vertical>
     <n-card :title="challenge.challenge.question" v-if="challenge.challenge">
-      <!-- header -->
       <challenge-header
         :id="challenge.challenge.id"
         :question="challenge.challenge.question"
