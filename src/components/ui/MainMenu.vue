@@ -4,6 +4,7 @@ import { useUserStore } from '../../stores/user';
 import { URI_DEFAULT_AVATAR } from '../../helpers/constants';
 import logo_c from '../../assets/logo/png/logo-no-background.png';
 import { useThemeStore } from '../../stores/theme';
+import { BrightnessContrast } from '@vicons/carbon';
 
 const user = useUserStore();
 const theme = useThemeStore();
@@ -35,7 +36,11 @@ const theme = useThemeStore();
     <!--  -->
     <n-space align="center">
       <!--  -->
-      <n-button text type="success" @click="theme.switchTheme">THEME</n-button>
+      <n-button text type="success" @click="theme.switchTheme">
+        <n-icon size="22">
+          <brightness-contrast />
+        </n-icon>
+      </n-button>
       <!--  -->
       <router-link to="/auth" v-if="!user.isLoggedIn">
         <n-button text type="primary"> SIGN IN </n-button>
