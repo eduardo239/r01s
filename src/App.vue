@@ -41,6 +41,7 @@ onMounted(() => {
     <n-layout class="main-container">
       <main-menu />
       <router-view />
+      <n-global-style />
     </n-layout>
   </n-config-provider>
 </template>
