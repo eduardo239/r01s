@@ -1,152 +1,106 @@
 {
   "challenges": [
     {
-      "question": "Primeiro da lista?",
-      "description": "If you want to apply required rule for.",
-      "duration": 10,
-      "answers": [
-        "123",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "language": "PYTHON",
-      "code": "x = 123",
-      "correct": "123",
-      "updated_at": "2022-10-30T15:10:52.521Z",
-      "created_at": "2022-10-30T15:10:52.521Z",
-      "id": "515a6a75-f6ba-42f9-b3df-82c6f78de02a"
-    },
-    {
-      "question": "Segundo desafio?",
-      "description": "You can use Array.prototype.slice and just supply the params for (start, end).",
-      "duration": 100,
-      "answers": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "difficulty": 10,
-      "language": "PYTHON",
-      "correct": "4",
-      "code": "from datetime import datetime\n\nmy_date_string = \"Mar 11 2011 11:31AM\"\n\ndatetime_object = datetime.strptime(my_date_string, '%b %d %Y %I:%M%p')\n\nprint(type(datetime_object))\nprint(datetime_object)",
-      "updated_at": "2022-10-30T17:40:04.226Z",
-      "created_at": "2022-10-30T17:40:04.226Z",
-      "id": "ca4f7378-c3b0-40fa-9458-3626f24abe15"
-    },
-    {
-      "question": "Qual é o retorno da quarta tentativa?",
-      "description": "Retorno de uma função em Python, relacionado a data.",
-      "duration": 10,
-      "answers": [
-        "<class 'datetime.datetime'>",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "correct": "<class 'datetime.datetime'>",
-      "code": "from datetime import datetime\n\nmy_date_string = \"Mar 11 2011 11:31AM\"\n\ndatetime_object = datetime.strptime(my_date_string, '%b %d %Y %I:%M%p')\n\nprint(type(datetime_object))\nprint(datetime_object)",
-      "language": "PYTHON",
-      "difficulty": 2,
-      "updated_at": "2022-10-30T17:42:02.334Z",
-      "created_at": "2022-10-30T17:42:02.334Z",
-      "id": "25ad6896-490c-43b2-9e2d-652049f3575b"
-    },
-    {
-      "question": "XXX123?",
-      "description": "If you want to apply required rule for.",
-      "duration": 10,
-      "answers": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
+      "question": "Qual o objetivo do algoritmo?",
+      "description": "Recebe uma string como parâmetro",
+      "duration": 30,
+      "difficulty": 1,
+      "code": "\nfunction xxx(str) {\n\n    let newString = \"\";\n    for (let i = str.length - 1; i >= 0; i--) {\n        newString += str[i];\n    }\n    return newString;\n}\n\nconst string = prompt('Enter a string: ');\n\nconst result = xxx(string);\nconsole.log(result);",
+      "correct": "Inverte uma string com For Loop",
       "language": "JAVASCRIPT",
-      "code": "23",
-      "correct": "2",
-      "updated_at": "2022-10-30T18:13:47.089Z",
-      "created_at": "2022-10-30T18:13:47.089Z",
-      "id": "ce6cf63b-f7ee-4ad9-a12a-189a5d2a8f76"
+      "updated_at": "2022-11-06T15:13:22.069Z",
+      "created_at": "2022-11-06T15:13:22.069Z",
+      "id": "f31201b4-4ade-4ffd-94d5-7f63e698dc38",
+      "answers": [
+        "Inverte uma string com For Loop",
+        "Coverte a primeira letra para maiúscula",
+        "Calcula o tamanho da string"
+      ]
     },
     {
-      "question": "The element to collect and validate data?",
-      "description": "If you want to apply required rule for.",
-      "duration": 10,
-      "answers": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "code": "23",
-      "correct": "2",
-      "language": "PYTHON",
-      "updated_at": "2022-10-30T18:14:25.328Z",
-      "created_at": "2022-10-30T18:14:25.328Z",
-      "id": "8b4a0802-dffe-49cc-a3ed-95f22b7a8753"
-    },
-    {
-      "question": "Plural de singular?",
-      "description": "If you want to apply required rule for.",
-      "duration": 10,
-      "answers": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "language": "PYTHON",
-      "difficulty": 5,
-      "correct": "2",
-      "code": "123",
-      "updated_at": "2022-10-30T18:15:21.569Z",
-      "created_at": "2022-10-30T18:15:21.569Z",
-      "id": "5dd9b601-8094-4f87-8f0a-39eafb789eeb"
-    },
-    {
-      "question": "The element to collect and validate data?",
-      "description": "If you want to apply required rule for.",
-      "duration": 44,
-      "answers": [
-        "123",
-        "245",
-        "365",
-        "4213",
-        "5879"
-      ],
-      "language": "JAVASCRIPT",
-      "code": "    const formRef = ref({});\n    const course = useCourseStore();\n    const user = useUserStore();\n    const page = ref(1);\n    const limit = ref(10);",
-      "correct": "4213",
+      "question": "Qual o objetivo do algoritmo?",
+      "description": "Recebeu um número e retorna ...",
+      "duration": 30,
       "difficulty": 2,
-      "updated_at": "2022-11-04T19:44:49.352Z",
-      "created_at": "2022-11-04T19:44:49.352Z",
-      "id": "6b3017b6-c9ca-4513-af1b-b7bc97dfa446"
+      "code": "const number = parseInt(prompt('Enter an integer: '));\n\nfor(let i = 1; i <= 10; i++) {\n    const result = i * number;\n\n    console.log(`${number} * ${i} = ${result}`);\n}",
+      "correct": "Retorna a tabela de multiplicaćão até 10",
+      "language": "JAVASCRIPT",
+      "updated_at": "2022-11-06T15:06:29.267Z",
+      "created_at": "2022-11-06T15:06:29.267Z",
+      "id": "238ca3e9-4604-4003-9def-f7f651f747ec",
+      "answers": [
+        "Retorna a soma do número até 10",
+        "Retorna a tabela de multiplicaćão até 10",
+        "Retorna a tabela do somatório até 10"
+      ]
     },
     {
-      "question": "ER",
-      "description": "455",
-      "duration": 33,
-      "answers": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
+      "question": "Algoritmo que mostra somente números...",
+      "description": "Recebe uma faixa de números e mostra somente certos números",
+      "duration": 40,
+      "difficulty": 3,
+      "code": "lower = 900\nupper = 1000\n\nprint(\"X numbers between\", lower, \"and\", upper, \"are:\")\n\nfor num in range(lower, upper + 1):\n   if num > 1:\n       for i in range(2, num):\n           if (num % i) == 0:\n               break\n       else:\n           print(num)",
+      "correct": "Mostra somente números primos",
       "language": "PYTHON",
-      "code": "23",
-      "correct": "3",
-      "updated_at": "2022-11-05T12:39:49.910Z",
-      "created_at": "2022-11-05T12:39:49.910Z",
-      "id": "4289262c-c65d-4f22-8d2e-14eb25dd0d3b"
+      "updated_at": "2022-11-06T14:59:55.685Z",
+      "created_at": "2022-11-06T14:59:55.685Z",
+      "id": "a2c246c5-e6a8-4949-9adb-c44f10ecffbc",
+      "answers": [
+        "Mostra somente números primos",
+        "Mostra somente números ímpares",
+        "Mostra a soma dos números no intervalo"
+      ]
+    },
+    {
+      "question": "Qual é o objetivo do algoritmo?",
+      "description": "Recebe um número e gera um retorno",
+      "duration": 20,
+      "answers": [
+        "Verifica se o número é ímpar ou par",
+        "Verifica se o número é um número primo",
+        "Verificar se o número é do tipo inteiro"
+      ],
+      "difficulty": 1,
+      "code": "num = int(input(\"Enter a number: \"))\nif (num % 2) == 0:\n   print(\"{0} is X\".format(num))\nelse:\n   print(\"{0} is Y\".format(num))",
+      "correct": "Verifica se o número é ímpar ou par",
+      "language": "PYTHON",
+      "updated_at": "2022-11-06T14:39:51.449Z",
+      "created_at": "2022-11-06T14:39:51.449Z",
+      "id": "241373b7-f673-4847-84da-d5cd139064af"
+    },
+    {
+      "question": "Algoritmo que retorna...",
+      "description": "Algoritmo com 3 váriaveis e um retorno",
+      "duration": 20,
+      "difficulty": 1,
+      "code": "num1 = 10\nnum2 = 14\nnum3 = 12\n\nif (num1 >= num2) and (num1 >= num3):\n   x = num1\nelif (num2 >= num1) and (num2 >= num3):\n   x = num2\nelse:\n   x = num3\n\nprint(\"The X number is\", x)",
+      "correct": "Encontra o maior entre 3 números",
+      "language": "PYTHON",
+      "updated_at": "2022-11-06T14:39:51.449Z",
+      "created_at": "2022-11-06T14:39:51.449Z",
+      "id": "92977a32-0696-4539-b555-ff0379abae4a",
+      "answers": [
+        "Encontra o maior entre 3 números",
+        "Encontra a média entre 3 números",
+        "Encontra a soma entre 3 números"
+      ]
+    },
+    {
+      "question": "Algoritmo que verifica se um número é ...",
+      "description": "Algoritmo que utiliza loop, if e else",
+      "duration": 10,
+      "answers": [
+        "Verifica se o número é primo",
+        "Verifica se o número é ímpar",
+        "Verificar se o número é None"
+      ],
+      "difficulty": 2,
+      "code": "num = 29\n\nflag = False\n\nif num > 1:\n    for i in range(2, num):\n        if (num % i) == 0:\n\n            flag = True\n            break\n\nif flag:\n    print(num, \"is not a X number\")\nelse:\n    print(num, \"is a X number\")",
+      "correct": "Verifica se o número é primo",
+      "language": "PYTHON",
+      "updated_at": "Sun Nov 06 2022 11:53:20 GMT-0300 (Horário Padrão de Brasília)",
+      "created_at": "Sun Nov 06 2022 11:53:20 GMT-0300 (Horário Padrão de Brasília)",
+      "id": "ea2a26d9-3517-44f3-b430-151c318c903d"
     }
   ]
 }

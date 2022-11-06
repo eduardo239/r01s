@@ -47,6 +47,12 @@ a {
   background-color: var(--color-dark);
 }
 
+.code {
+  font-size: 0.875rem;
+  letter-spacing: 0.3px;
+  font-family: var(--font-mono);
+}
+
 .challenge-alternatives {
   display: block;
 }

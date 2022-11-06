@@ -26,7 +26,7 @@ const model = ref({
   question: null,
   description: null,
   duration: 10,
-  answers: ['1', '2', '3', '4', '5'],
+  answers: ['1', '2', '3'],
   difficulty: null,
   code: 'const x = 1;',
   correct: null,
@@ -135,7 +135,7 @@ onMounted(() => {});
               label="How long will the challenge last"
               path="duration"
             >
-              <n-space :min="10" :max="100" vertical style="width: 100%">
+              <n-space :min="10" :max="999" vertical style="width: 100%">
                 <n-slider v-model:value="model.duration" :step="1" />
 
                 <n-input-number
@@ -166,7 +166,7 @@ onMounted(() => {});
             <!--  -->
             <n-form-item-gi
               :span="12"
-              label="Add alternatives here"
+              label="Add the alternatives here"
               path="answers"
             >
               <n-dynamic-input
@@ -194,7 +194,11 @@ onMounted(() => {});
               label="Code Live Preview"
               path="liveCode"
             >
-              <n-space style="overflow: auto" class="code-container">
+              <n-space
+                style="overflow: auto; width: 100%"
+                class="code-container"
+                s
+              >
                 <n-code
                   class="code"
                   :code="model.code"

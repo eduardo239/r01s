@@ -15,7 +15,7 @@ const route = useRoute();
 const router = useRouter();
 
 const isPlaying = ref(true);
-const timer = ref(1000);
+const timer = ref(10);
 
 const message = ref({ type: '', message: '' });
 
@@ -24,18 +24,22 @@ const countDowntimer = () => {
     setTimeout(() => {
       timer.value--;
       countDowntimer();
-    }, 100);
+    }, 1000);
   } else if (timer.value <= 0) {
     isPlaying.value = false;
     timer.value = 0;
+
+    message.value = {
+      type: 'error',
+      message: `The time is over.`,
+    };
   }
 };
 
 watch(challenge, (newValue) => {
   if (newValue) {
     // timer
-    timer.value = challenge.challenge.duration * 10;
-    countDowntimer();
+    // timer.value = challenge.challenge.duration;
   }
 });
 
@@ -45,6 +49,10 @@ onMounted(() => {
   }
   // verifica se o usuario esta logado
   if (!user.isLoggedIn) router.push('/auth');
+
+  timer.value = challenge.challenge.duration;
+
+  countDowntimer();
 });
 
 onUnmounted(() => {
@@ -52,11 +60,12 @@ onUnmounted(() => {
 });
 
 const saveUserAnswer = (data) => {
-  const userAnswer = data.value;
   isPlaying.value = false;
+
+  const userAnswer = data.value;
   const timeLeft = timer.value;
   const correct = userAnswer.alternative === challenge.challenge.correct;
-  console.log(userAnswer.alternative + '===' + challenge.challenge.correct);
+
   const payload = {
     uid: user.user.uid,
     cid: challenge.challenge.id,

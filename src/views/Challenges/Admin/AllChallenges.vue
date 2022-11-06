@@ -30,7 +30,7 @@ const createColumns = ({ view, remove, update }) => {
             round: true,
             type: 'default',
             style: 'font-size: .75rem',
-            onClick: () => view(row),
+            onClick: () => null,
           },
           {
             default: () => {
@@ -51,7 +51,7 @@ const createColumns = ({ view, remove, update }) => {
           {
             type: 'info',
             style: 'font-size: .75rem',
-            onClick: () => view(row),
+            onClick: () => null,
           },
           { default: () => row.language }
         );
@@ -66,7 +66,7 @@ const createColumns = ({ view, remove, update }) => {
           {
             type: 'info',
             style: 'font-size: .75rem',
-            onClick: () => view(row),
+            onClick: () => null,
           },
           { default: () => row.answers.length }
         );

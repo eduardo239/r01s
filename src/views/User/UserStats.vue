@@ -14,10 +14,7 @@ const handleColorPercentage = computed(() => {
   else return 'text-success';
 });
 
-onMounted(() => {
-  user.correctAnswers;
-  user.getTotalCorrectAnswers;
-});
+onMounted(() => {});
 </script>
 
 <template>
@@ -33,12 +30,15 @@ onMounted(() => {
       <n-list-item>
         <n-statistic
           label="Completed Challenges"
-          :value="user.totalUserCompletedChallenges"
+          :value="user.sumOfAllCompletedChallenges(user.userLocalStorage)"
         >
         </n-statistic>
       </n-list-item>
       <n-list-item>
-        <n-statistic label="Correct Challenges" :value="user.correctAnswers">
+        <n-statistic
+          label="Correct Challenges"
+          :value="user.totalOfCorrectAnswers(user.userLocalStorage)"
+        >
         </n-statistic
       ></n-list-item>
 
@@ -46,13 +46,16 @@ onMounted(() => {
         <n-statistic
           :class="handleColorPercentage"
           label="Percentage of Correct Challenges"
-          :value="user.percentageCorrect"
+          :value="user.percentageOfCorrectAnswers(user.userLocalStorage)"
         >
         </n-statistic>
       </n-list-item>
 
       <n-list-item>
-        <n-statistic label="Total of Points" :value="user.totalUserPoints">
+        <n-statistic
+          label="Total of Points"
+          :value="user.totalOfPoints(user.userLocalStorage)"
+        >
         </n-statistic>
       </n-list-item>
     </n-list>

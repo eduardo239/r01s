@@ -55,6 +55,7 @@ export const useChallengeStore = defineStore('challenge', () => {
   }
   async function _postNewChallenge(data) {
     resetError();
+
     const cq = data.question;
     const cf = data.difficulty || 1;
     const cd = data.description;
@@ -72,22 +73,29 @@ export const useChallengeStore = defineStore('challenge', () => {
         id: uuidv4(),
       };
 
+      console.log(payload);
+
       try {
         const alreadyExists = findByUUID(payload.id, challenges.value);
 
         if (!alreadyExists) {
           challenges.value.unshift(payload);
         } else {
-          // set exists error
+          error.value = {
+            status: true,
+            message: error,
+            type: 'error',
+          };
         }
       } catch (error) {
-        // set new error
+        console.log(error);
+        // set new ereror
       } finally {
         loading.value = false;
       }
     } else {
       loading.value = false;
-      console.log(2);
+
       error.value = {
         status: true,
         message: 'Please, fill in the form fields.',
@@ -204,6 +212,7 @@ export const useChallengeStore = defineStore('challenge', () => {
 
   // find by uuid
   function findByUUID(uuid, array) {
+    if (array.length === 0) return false;
     for (let i = 0; i < array.length; i++) {
       if (array[i].id === uuid) {
         return true;

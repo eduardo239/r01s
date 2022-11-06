@@ -1,10 +1,10 @@
 <script setup>
 import { auth } from './firebaseConfig';
-import { useChallengeStore } from './stores/challenges';
-import { useThemeStore } from './stores/theme';
 import { onMounted } from 'vue';
-import { NLayout, NConfigProvider, darkTheme } from 'naive-ui';
 import { useUserStore } from './stores/user';
+import { useThemeStore } from './stores/theme';
+import { useChallengeStore } from './stores/challenges';
+import { NLayout, NConfigProvider } from 'naive-ui';
 
 import MainMenu from './components/ui/MainMenu.vue';
 
@@ -31,11 +31,13 @@ onMounted(() => {
 
   // set all challenges from db
   challenge._getAllChallenges();
+
+  theme.loadLocalStorageTheme();
 });
 </script>
 
 <template>
-  <n-config-provider :hljs="hljs" :theme="darkTheme">
+  <n-config-provider :hljs="hljs" :theme="theme.getTheme">
     <n-layout class="main-container">
       <main-menu />
       <router-view />

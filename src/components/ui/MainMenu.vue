@@ -1,11 +1,12 @@
 <script setup>
-import { ref } from 'vue';
 import { NButton, NSpace, NAvatar } from 'naive-ui';
 import { useUserStore } from '../../stores/user';
 import { URI_DEFAULT_AVATAR } from '../../helpers/constants';
 import logo_c from '../../assets/logo/png/logo-no-background.png';
+import { useThemeStore } from '../../stores/theme';
 
 const user = useUserStore();
+const theme = useThemeStore();
 </script>
 
 <template>
@@ -30,8 +31,11 @@ const user = useUserStore();
       <!--  -->
     </n-space>
     <!--  -->
+
     <!--  -->
     <n-space align="center">
+      <!--  -->
+      <n-button text type="success" @click="theme.switchTheme">THEME</n-button>
       <!--  -->
       <router-link to="/auth" v-if="!user.isLoggedIn">
         <n-button text type="primary"> SIGN IN </n-button>

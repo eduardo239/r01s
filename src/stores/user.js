@@ -16,48 +16,52 @@ export const useUserStore = defineStore('user', () => {
   const userLocalStorage = ref(null);
   const loading = ref(false);
   const error = ref({ status: false, message: '', type: '' });
-  const correctAnswers = ref(0);
-  const totalUserCompletedChallenges = ref(0);
-  const totalUserPoints = ref(0);
 
   // getters
   const isLoggedIn = computed(() => !!user.value);
 
-  const getTotalUserCompletedChallenges = computed(() => {
-    if (userLocalStorage.value) {
-      totalUserCompletedChallenges.value =
-        userLocalStorage.value?.answers.length;
-    }
-  });
-
-  const getTotalCorrectAnswers = computed(() => {
-    if (userLocalStorage.value) {
-      const _correct = userLocalStorage.value?.answers.filter((x) => x.correct);
-      correctAnswers.value = _correct.length;
-    }
-  });
-
-  const percentageCorrect = computed(() => {
-    const ca = parseFloat(correctAnswers.value);
-    const tc = parseFloat(totalUserCompletedChallenges.value);
-    if (ca === 0 && tc === 0) {
-      return '0.0%';
-    } else {
-      return ((ca / tc) * 100).toFixed(1) + '%';
-    }
-  });
-
-  const getTotalUserPoints = computed(() => {
-    if (userLocalStorage.value) {
-      const tt = userLocalStorage.value?.answers;
-      const cr = tt.filter((x) => x.correct);
-
-      let result = 0;
-      for (let i = 0; i < cr.length; i++) {
-        result += cr[i].points;
+  // getters 2
+  const sumOfAllCompletedChallenges = computed(() => {
+    return (user) => {
+      if (user) {
+        return user.answers.length;
       }
-      totalUserPoints.value = result;
-    }
+    };
+  });
+
+  const totalOfCorrectAnswers = computed(() => {
+    return (user) => {
+      if (user) {
+        return user.answers.filter((x) => x.correct).length;
+      }
+    };
+  });
+
+  const percentageOfCorrectAnswers = computed(() => {
+    return (user) => {
+      if (user) {
+        const crr = user.answers.filter((x) => x.correct).length;
+        const ttl = user.answers.length;
+
+        if (crr === 0 && ttl === 0) return `0.0%`;
+        else return ((crr / ttl) * 100).toFixed(1) + '%';
+      }
+    };
+  });
+
+  const totalOfPoints = computed(() => {
+    return (user) => {
+      if (user) {
+        let res = 0;
+        const crr = user.answers.filter((x) => x.correct);
+        crr.map((x) => {
+          if (x.points !== null) {
+            res += x.points;
+          }
+        });
+        return res;
+      }
+    };
   });
 
   // actions
@@ -199,12 +203,10 @@ export const useUserStore = defineStore('user', () => {
     updateUserFirebase,
     resetError,
     saveUserAnswer,
-    correctAnswers,
-    totalUserCompletedChallenges,
-    totalUserPoints,
-    percentageCorrect,
-    getTotalUserCompletedChallenges,
-    getTotalCorrectAnswers,
-    getTotalUserPoints,
+
+    sumOfAllCompletedChallenges,
+    totalOfPoints,
+    totalOfCorrectAnswers,
+    percentageOfCorrectAnswers,
   };
 });

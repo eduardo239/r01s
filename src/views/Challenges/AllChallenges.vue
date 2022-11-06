@@ -6,7 +6,7 @@ import { useChallengeStore } from '../../stores/challenges';
 const challenge = useChallengeStore();
 
 const page = ref(1);
-const limit = ref(3);
+const limit = ref(5);
 const total = ref(0);
 
 onMounted(() => {
