@@ -39,7 +39,7 @@ onMounted(() => {
 <template>
   <n-config-provider :hljs="hljs" :theme="theme.getTheme">
     <n-layout class="main-container">
-      <main-menu />
+      <main-menu msg="test" />
       <router-view />
       <n-global-style />
     </n-layout>

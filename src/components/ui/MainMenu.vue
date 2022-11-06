@@ -1,10 +1,11 @@
 <script setup>
-import { NButton, NSpace, NAvatar } from 'naive-ui';
 import { useUserStore } from '../../stores/user';
-import { URI_DEFAULT_AVATAR } from '../../helpers/constants';
-import logo_c from '../../assets/logo/png/logo-no-background.png';
 import { useThemeStore } from '../../stores/theme';
 import { BrightnessContrast } from '@vicons/carbon';
+import { URI_DEFAULT_AVATAR } from '../../helpers/constants';
+import { NButton, NSpace, NAvatar, NIcon } from 'naive-ui';
+
+import logo_c from '../../assets/logo/png/logo-no-background.png';
 
 const user = useUserStore();
 const theme = useThemeStore();
