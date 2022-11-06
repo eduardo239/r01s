@@ -33,8 +33,6 @@ const theme = useThemeStore();
       <!--  -->
     </n-space>
     <!--  -->
-
-    <!--  -->
     <n-space align="center">
       <!--  -->
       <n-button text type="success" @click="theme.switchTheme">
@@ -46,9 +44,7 @@ const theme = useThemeStore();
       <router-link to="/auth" v-if="!user.isLoggedIn">
         <n-button text type="primary"> SIGN IN </n-button>
       </router-link>
-
       <!--  -->
-
       <router-link
         v-if="user.isLoggedIn"
         :to="`/profile/${user.user.uid}/stats`"
