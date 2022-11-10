@@ -31,8 +31,8 @@ export const useThemeStore = defineStore('theme', () => {
   // atualiza o tema com o do localStorage
   function loadLocalStorageTheme() {
     const localTheme = localStorage.getItem('theme');
-    if (localTheme === 'dark') theme.value = darkTheme;
-    else theme.value = lightTheme;
+    if (localTheme === 'light') theme.value = lightTheme;
+    else theme.value = darkTheme;
   }
 
   return { theme, getTheme, switchTheme, loadLocalStorageTheme };

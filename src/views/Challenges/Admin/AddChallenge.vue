@@ -25,7 +25,7 @@ const challenge = useChallengeStore();
 const model = ref({
   question: null,
   description: null,
-  duration: 10,
+  duration: 50,
   answers: ['1', '2', '3'],
   difficulty: null,
   code: 'const x = 1;',
@@ -80,16 +80,25 @@ onMounted(() => {});
             >
           </n-space>
           <!--  -->
-          <n-grid :span="24" :x-gap="24">
+          <n-grid cols="2" item-responsive :x-gap="24">
             <!--  -->
-            <n-form-item-gi :span="12" label="Question" path="question">
+            <n-form-item-gi
+              span="2 600:1"
+              :cols="1"
+              label="Question"
+              path="question"
+            >
               <n-input
                 v-model:value="model.question"
                 placeholder="Challenge question."
               />
             </n-form-item-gi>
             <!--  -->
-            <n-form-item-gi :span="12" label="Description" path="description">
+            <n-form-item-gi
+              span="2 600:1"
+              label="Description"
+              path="description"
+            >
               <n-input
                 v-model:value="model.description"
                 placeholder="What is the input type of the algorithm."
@@ -97,7 +106,7 @@ onMounted(() => {});
             </n-form-item-gi>
             <!--  -->
             <n-form-item-gi
-              :span="12"
+              span="2 600:1"
               label="Select the language"
               path="language"
             >
@@ -112,10 +121,9 @@ onMounted(() => {});
                 "
               />
             </n-form-item-gi>
-
             <!--  -->
             <n-form-item-gi
-              :span="12"
+              span="2 600:1"
               label="Select the difficulty (min=1, max=10)"
               path="difficulty"
             >
@@ -128,14 +136,13 @@ onMounted(() => {});
                 clearable
               />
             </n-form-item-gi>
-
             <!--  -->
             <n-form-item-gi
-              :span="12"
+              span="2 600:1"
               label="How long will the challenge last"
               path="duration"
             >
-              <n-space :min="10" :max="999" vertical style="width: 100%">
+              <n-space :min="10" :max="100" vertical style="width: 100%">
                 <n-slider v-model:value="model.duration" :step="1" />
 
                 <n-input-number
@@ -148,7 +155,7 @@ onMounted(() => {});
             </n-form-item-gi>
             <!--  -->
             <n-form-item-gi
-              :span="12"
+              span="2 600:1"
               label="Select the right answer"
               path="correct"
             >
@@ -165,7 +172,7 @@ onMounted(() => {});
             </n-form-item-gi>
             <!--  -->
             <n-form-item-gi
-              :span="12"
+              span="2 600:1"
               label="Add the alternatives here"
               path="answers"
             >
@@ -177,7 +184,11 @@ onMounted(() => {});
               />
             </n-form-item-gi>
             <!--  -->
-            <n-form-item-gi :span="12" label="Insert the code here" path="code">
+            <n-form-item-gi
+              span="2 600:1"
+              label="Insert the code here"
+              path="code"
+            >
               <n-input
                 v-model:value="model.code"
                 placeholder="Insert the code here ....."
@@ -189,11 +200,7 @@ onMounted(() => {});
               />
             </n-form-item-gi>
             <!--  -->
-            <n-form-item-gi
-              :span="24"
-              label="Code Live Preview"
-              path="liveCode"
-            >
+            <n-form-item-gi span="2" label="Code Live Preview" path="liveCode">
               <n-space
                 style="overflow: auto; width: 100%"
                 class="code-container"
@@ -207,7 +214,7 @@ onMounted(() => {});
               </n-space>
             </n-form-item-gi>
             <!--  -->
-            <n-gi :span="24">
+            <n-gi span="2">
               <n-button
                 :disabled="challenge.loading"
                 :loading="challenge.loading"

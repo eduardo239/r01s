@@ -11,6 +11,10 @@ const props = defineProps({
 
 <template>
   <n-space class="code-container">
-    <n-code class="code" :code="code" :language="language" />
+    <div style="overflow: auto">
+      <n-space vertical>
+        <n-code class="code" :code="code" :language="language" />
+      </n-space>
+    </div>
   </n-space>
 </template>

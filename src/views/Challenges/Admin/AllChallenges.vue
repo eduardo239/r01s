@@ -1,9 +1,18 @@
 <script setup>
 import { h, ref, watch, onMounted } from 'vue';
-import { NSpace, NCard, NLayout, NDataTable, NButton, NText } from 'naive-ui';
+import {
+  NSpace,
+  NCard,
+  NLayout,
+  NDataTable,
+  NButton,
+  NText,
+  NIcon,
+} from 'naive-ui';
 import { useChallengeStore } from '../../../stores/challenges';
 import { useUserStore } from '../../../stores/user';
 import { useRouter } from 'vue-router';
+import { TrashCan, UpdateNow, View as ViewNow } from '@vicons/carbon';
 
 const user = useUserStore();
 const challenge = useChallengeStore();
@@ -35,7 +44,7 @@ const createColumns = ({ view, remove, update }) => {
           {
             default: () => {
               const q = row.id;
-              if (q.length > 10) return q.slice(0, 10) + ' ...';
+              if (q.length > 5) return q.slice(0, 5) + ' ...';
               else return q;
             },
           }
@@ -57,35 +66,19 @@ const createColumns = ({ view, remove, update }) => {
         );
       },
     },
-    {
-      title: 'Alternatives',
-      key: 'answers.length',
-      render(row) {
-        return h(
-          NText,
-          {
-            type: 'info',
-            style: 'font-size: .75rem',
-            onClick: () => null,
-          },
-          { default: () => row.answers.length }
-        );
-      },
-    },
+
     {
       title: 'View',
       key: 'actions',
       render(row) {
         return h(
-          NButton,
+          NIcon,
           {
-            strong: true,
-            type: 'success',
-            size: 'tiny',
-            secondary: true,
+            component: ViewNow,
+            size: 18,
             onClick: () => view(row),
           },
-          { default: () => 'View' }
+          { default: () => null }
         );
       },
     },
@@ -94,33 +87,28 @@ const createColumns = ({ view, remove, update }) => {
       key: 'actions',
       render(row) {
         return h(
-          NButton,
+          NIcon,
           {
-            strong: true,
-            type: 'info',
-            size: 'tiny',
-            secondary: true,
+            component: UpdateNow,
+            size: 18,
             onClick: () => update(row),
           },
-          { default: () => 'Update' }
+          { default: () => null }
         );
       },
     },
     {
-      title: 'Remove',
+      title: 'Delete',
       key: 'remove',
       render(row) {
         return h(
-          NButton,
+          NIcon,
           {
-            strong: true,
-            tertiary: false,
-            type: 'error',
-            size: 'tiny',
-            secondary: true,
+            component: TrashCan,
+            size: 18,
             onClick: () => remove(row),
           },
-          { default: () => 'Remover' }
+          { default: () => null }
         );
       },
     },

@@ -20,13 +20,8 @@ watch(user, (newValue) => {
       <n-card title="Authentication" style="min-height: 90vh">
         <!--  -->
         <n-space justify="center">
-          <n-tabs
-            class="card-tabs"
-            default-value="auth"
-            animated
-            pane-style="padding-left: 4px; padding-right: 4px; box-sizing: border-box;"
-          >
-            <n-tab-pane name="auth" tab="Sign in">
+          <n-tabs default-value="sign-in" animated>
+            <n-tab-pane name="sign-in" tab="Sign in">
               <sign-in></sign-in>
             </n-tab-pane>
             <n-tab-pane name="signup" tab="Sign up">
