@@ -18,7 +18,7 @@ onMounted(() => {});
 </script>
 
 <template>
-  <n-space vertical class="form-container">
+  <n-space vertical class="stats-container">
     <n-list>
       <n-list-item class="p-1">
         <n-statistic

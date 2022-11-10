@@ -21,8 +21,8 @@ const user = useUserStore();
   <n-space vertical>
     <n-layout>
       <n-card title="User Profile">
-        <n-grid :span="24" :x-gap="24">
-          <n-grid-item :span="6">
+        <n-grid cols="4" item-responsive :x-gap="24">
+          <n-grid-item span="4 500:1">
             <!-- menu -->
             <n-space vertical v-if="user.isLoggedIn">
               <n-list bordered>
@@ -30,7 +30,7 @@ const user = useUserStore();
                   <n-space align="center" vertical>
                     <n-avatar
                       round
-                      :size="120"
+                      :size="90"
                       :src="user.photoURL || URI_DEFAULT_AVATAR"
                     />
                     <n-text>
@@ -52,16 +52,6 @@ const user = useUserStore();
                 </n-button>
               </router-link>
 
-              <!-- <n-button
-            strong
-            secondary
-            block
-            type="success"
-            @click="ui.switchTheme"
-          >
-            Switch Theme
-          </n-button> -->
-
               <router-link v-if="user.isLoggedIn" to="/">
                 <n-button
                   strong
@@ -75,7 +65,7 @@ const user = useUserStore();
               </router-link>
             </n-space>
           </n-grid-item>
-          <n-grid-item :span="18">
+          <n-grid-item span="4 500:3">
             <!-- tabs -->
             <n-space>
               <!--  -->
