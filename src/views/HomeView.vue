@@ -6,7 +6,7 @@
       <n-card title="Think Fast App">
         <n-space vertical>
           Este é um aplicativo, que desafia o usuário a responder uma questão
-          sobre algoritmo, com um tempo limite
+          sobre algoritmo, com um tempo limite.
         </n-space>
         <n-space style="padding: 1rem 0">
           <n-carousel autoplay dot-type="line" :interval="10000" show-arrow>
