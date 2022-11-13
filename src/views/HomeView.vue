@@ -9,7 +9,7 @@
           sobre algoritmo, com um tempo limite
         </n-space>
         <n-space style="padding: 1rem 0">
-          <n-carousel autoplay dot-type="line" interval="10000" show-arrow>
+          <n-carousel autoplay dot-type="line" :interval="10000" show-arrow>
             <img
               class="carousel-img"
               src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel1.jpeg"
