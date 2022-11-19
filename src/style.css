@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital@0;1&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital@0;1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 :root {
   --shadow: 0 7px 14px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
@@ -9,7 +10,8 @@
   --color-light: #ecedf0;
   --color-light2: #d7d8db;
 
-  --font-mono: 'IBM Plex Mono', 'Courier New', Courier, monospace;
+  --font-mono: "IBM Plex Mono", "Courier New", Courier, monospace;
+  --font-sans: "Poppins", Arial, Helvetica, sans-serif;
 
   --nn-color-error: #e88080;
   --nn-color-warning: #f2c97d;
@@ -17,16 +19,26 @@
   --nn-color-success: #63e2b7;
 }
 
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
 .main-container {
   min-height: 100vh;
   max-width: 900px;
   margin: 0 auto;
   padding: 1rem;
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
 }
 
 a {
   text-decoration: none;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
 }
 
 .menu {
@@ -81,8 +93,8 @@ a {
   font-size: 0.875rem;
 }
 .sans-text {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .p-1 {

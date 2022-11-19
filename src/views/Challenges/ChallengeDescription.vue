@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref } from "vue";
 import {
   NCard,
   NText,
@@ -10,10 +10,10 @@ import {
   NLayout,
   NButtonGroup,
   NButton,
-} from 'naive-ui';
-import { useChallengeStore } from '../../stores/challenges';
-import { useRoute, useRouter } from 'vue-router';
-import { useUserStore } from '../../stores/user';
+} from "naive-ui";
+import { useChallengeStore } from "../../stores/challenges";
+import { useRoute, useRouter } from "vue-router";
+import { useUserStore } from "../../stores/user";
 
 const challenge = useChallengeStore();
 const user = useUserStore();
@@ -36,32 +36,32 @@ const goToChallenge = () => {
   <n-space vertical v-if="challenge.challenge">
     <n-layout>
       <n-card v-if="challenge" :title="challenge.challenge.question">
-        <n-space vertical>
+        <n-space vertical class="font-mono">
           <n-list>
             <n-list-item
               ><n-p>
-                Duration:
+                {{ $t("challenges.duration") }}:
 
                 <n-text type="warning">
-                  {{ challenge.challenge.duration + 's' || '---' }}
+                  {{ challenge.challenge.duration + "s" || "---" }}
                 </n-text>
               </n-p>
             </n-list-item>
 
             <n-list-item
               ><n-p>
-                Difficulty:
+                {{ $t("challenges.difficulty") }}:
 
                 <n-text type="warning">
-                  {{ challenge.challenge.difficulty || '---' }}
+                  {{ challenge.challenge.difficulty || "---" }}
                 </n-text>
               </n-p>
             </n-list-item>
             <n-list-item
               ><n-p>
-                Language:
+                {{ $t("challenges.language") }}:
                 <n-text type="warning">{{
-                  challenge.challenge.language || '---'
+                  challenge.challenge.language || "---"
                 }}</n-text>
               </n-p>
             </n-list-item>
@@ -73,33 +73,28 @@ const goToChallenge = () => {
             </n-list-item>
             <n-list-item>
               <n-p>
-                Updated:
+                {{ $t("challenges.updated") }}:
                 <n-text type="warning">
                   {{
                     new Date(challenge.challenge.updated_at).toLocaleString() ||
-                    '---'
+                    "---"
                   }}
                 </n-text>
               </n-p>
             </n-list-item>
-
-            <!-- <n-p>
-              Finished:
-              <n-text type="success">{{ user.alreadyFinished }}</n-text>
-            </n-p> -->
           </n-list>
         </n-space>
 
         <n-space vertical style="margin-top: 2rem">
           <n-button-group>
-            <n-button @click="router.go(-1)">back</n-button>
+            <n-button @click="router.go(-1)">{{ $t("form.back") }}</n-button>
 
             <n-button
               @click="goToChallenge"
               type="success"
               :disabled="!user.isLoggedIn"
               >{{
-                !user.isLoggedIn ? 'You need to be registred' : 'Start Test Now'
+                !user.isLoggedIn ? $t("auth.required.signin") : $t("form.start")
               }}</n-button
             >
             <!-- <n-button

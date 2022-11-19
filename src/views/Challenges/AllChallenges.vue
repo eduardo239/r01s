@@ -1,7 +1,7 @@
 <script setup>
-import { onMounted, ref } from 'vue';
-import { NButton, NList, NThing, NListItem, NTag, NPagination } from 'naive-ui';
-import { useChallengeStore } from '../../stores/challenges';
+import { onMounted, ref } from "vue";
+import { NButton, NList, NThing, NListItem, NTag, NPagination } from "naive-ui";
+import { useChallengeStore } from "../../stores/challenges";
 
 const challenge = useChallengeStore();
 
@@ -45,21 +45,21 @@ function next(pagination) {
         <template #description>
           <n-space size="small" style="margin-top: 4px">
             <n-tag :bordered="false" type="info" size="small">
-              {{ ch.duration || '--' }}s
+              {{ ch.duration || "--" }}s
             </n-tag>
 
             <n-tag :bordered="false" type="info" size="small">
-              {{ ch.language || '--' }}
+              {{ ch.language || "--" }}
             </n-tag>
           </n-space>
         </template>
         <n-text depth="3">
-          {{ ch.description || '--' }}
+          {{ ch.description || "--" }}
         </n-text>
       </n-thing>
       <template #suffix>
         <router-link :to="`/challenge-description/${ch.id}`">
-          <n-button type="success">View More</n-button>
+          <n-button type="success">{{ $t("form.view") }}</n-button>
         </router-link>
       </template>
     </n-list-item>

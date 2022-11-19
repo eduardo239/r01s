@@ -1,21 +1,21 @@
 <script setup>
-import { onUnmounted, ref } from 'vue';
-import { NSpace, NRadioGroup, NRadio, NButton } from 'naive-ui';
-import { useRouter } from 'vue-router';
+import { ref } from "vue";
+import { NSpace, NRadioGroup, NRadio, NButton } from "naive-ui";
+import { useRouter } from "vue-router";
 
 const router = useRouter();
 const checked = ref(null);
 const isDisabled = ref(false);
-const model = ref({ alternative: '' });
+const model = ref({ alternative: "" });
 
-const props = defineProps(['alternatives', 'isPlaying']);
-const emits = defineEmits(['event']);
+const props = defineProps(["alternatives", "isPlaying"]);
+const emits = defineEmits(["event"]);
 
 const handleChange = (e) => (checked.value = e.target.value);
 
 const submit = (data) => {
   isDisabled.value = true;
-  emits('event', model);
+  emits("event", model);
 };
 </script>
 
@@ -48,11 +48,11 @@ const submit = (data) => {
         type="primary"
         @click="submit(model)"
       >
-        SAVE
+        {{ $t("form.save") }}
       </n-button>
 
-      <n-button :disabled="isPlaying" size="large" @click="() => router.go(-1)"
-        >Back</n-button
+      <n-button :disabled="isPlaying" size="large" @click="() => router.go(-1)">
+        {{ $t("form.back") }}</n-button
       >
     </n-button-group>
   </n-space>

@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 import {
   NSpace,
   NLayout,
@@ -9,10 +9,10 @@ import {
   NButton,
   NList,
   NListItem,
-} from 'naive-ui';
-import { useUserStore } from '../../stores/user';
-import UserStats from './UserHome.vue';
-import { URI_DEFAULT_AVATAR } from '../../helpers/constants';
+} from "naive-ui";
+import { useUserStore } from "../../stores/user";
+import UserStats from "./UserHome.vue";
+import { URI_DEFAULT_AVATAR } from "../../helpers/constants";
 
 const user = useUserStore();
 </script>
@@ -42,13 +42,13 @@ const user = useUserStore();
 
               <router-link :to="`/profile/${user.user.uid}/stats`">
                 <n-button strong secondary block type="success">
-                  Stats
+                  {{ $t("user.menu.stats") }}
                 </n-button>
               </router-link>
 
               <router-link :to="`/profile/${user.user.uid}/edit`">
                 <n-button strong secondary block type="success">
-                  Edit
+                  {{ $t("user.menu.edit") }}
                 </n-button>
               </router-link>
 
@@ -60,7 +60,7 @@ const user = useUserStore();
                   type="error"
                   @click="user.logOutFirebase"
                 >
-                  Exit
+                  {{ $t("user.menu.exit") }}
                 </n-button>
               </router-link>
             </n-space>

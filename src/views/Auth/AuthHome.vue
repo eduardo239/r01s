@@ -1,16 +1,16 @@
 <script setup>
-import { ref, watch } from 'vue';
-import { useRouter } from 'vue-router';
-import { useUserStore } from '../../stores/user';
-import SignIn from './SignIn.vue';
-import SignUp from './SignUp.vue';
+import { ref, watch } from "vue";
+import { useRouter } from "vue-router";
+import { useUserStore } from "../../stores/user";
+import SignIn from "./SignIn.vue";
+import SignUp from "./SignUp.vue";
 
 const count = ref(0);
 const user = useUserStore();
 const router = useRouter();
 
 watch(user, (newValue) => {
-  if (newValue.isLoggedIn) router.push('/challenges');
+  if (newValue.isLoggedIn) router.push("/challenges");
 });
 </script>
 
@@ -21,10 +21,10 @@ watch(user, (newValue) => {
         <!--  -->
         <n-space justify="center">
           <n-tabs default-value="sign-in" animated>
-            <n-tab-pane name="sign-in" tab="Sign in">
+            <n-tab-pane name="sign-in" :tab="$t('auth.signin')">
               <sign-in></sign-in>
             </n-tab-pane>
-            <n-tab-pane name="signup" tab="Sign up">
+            <n-tab-pane name="signup" :tab="$t('auth.signup')">
               <sign-up></sign-up>
             </n-tab-pane>
           </n-tabs>

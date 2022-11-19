@@ -3,11 +3,7 @@
 <template>
   <n-space vertical>
     <n-layout>
-      <n-card title="Think Fast App">
-        <n-space vertical>
-          Este é um aplicativo, que desafia o usuário a responder uma questão
-          sobre algoritmo, com um tempo limite.
-        </n-space>
+      <n-card :title="$t('home.title')">
         <n-space style="padding: 1rem 0">
           <n-carousel autoplay dot-type="line" :interval="10000" show-arrow>
             <img
@@ -22,23 +18,18 @@
         </n-space>
 
         <n-space style="padding: 1rem 0" vertical>
-          <n-h3>Definition of 'challenge'</n-h3>
+          <n-h3>{{ $t("home.definition") }}</n-h3>
 
-          <n-text depth="2"
-            >A challenge is something new and difficult which requires great
-            effort and determination.
+          <n-text depth="2">
+            {{ $t("home.description2") }}
           </n-text>
 
           <n-divider dashed />
 
-          <n-text depth="2" strong
-            >Synonyms: dare, provocation, summons to contest, wero</n-text
-          >
-
-          <n-divider dashed />
-
           <router-link to="/challenges">
-            <n-button type="success">See the challenges</n-button></router-link
+            <n-button type="success">{{
+              $t("form.see")
+            }}</n-button></router-link
           >
         </n-space>
       </n-card>
