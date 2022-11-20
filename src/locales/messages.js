@@ -112,7 +112,7 @@ export default {
       difficulty: "Dificuldade",
       language: "Linguagem",
       updated: "Atualizado em",
-      timer: "Temporizador",
+      timer: "Tempo",
       seconds: "Segundos",
     },
     user: {

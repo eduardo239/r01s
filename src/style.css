@@ -2,7 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 :root {
-  --shadow: 0 7px 14px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
+  --shadow1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --shadow2: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  --shadow3: 0 7px 14px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
 
   --color-primary: #63e2b7;
   --color-dark: #0e0e11;
@@ -25,16 +27,16 @@
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+}
+
 .main-container {
   min-height: 100vh;
   max-width: 900px;
-  margin: 0 auto;
+  margin: 0 auto 3rem;
   padding: 1rem;
   font-family: var(--font-sans);
-}
-
-a {
-  text-decoration: none;
 }
 
 .font-mono {
@@ -70,6 +72,7 @@ a {
   border-radius: 5px;
   padding: 0.25rem 0.5rem;
   width: calc(100% - 2rem);
+  box-shadow: var(--shadow1);
 }
 
 .form-container {
@@ -111,4 +114,20 @@ a {
 
 .text-success > .n-statistic-value > span {
   color: var(--nn-color-success) !important;
+}
+
+.timer {
+  position: fixed;
+  bottom: 0.5rem;
+  left: 0;
+  right: 0;
+  background-color: var(--color-dark2);
+  color: var(--nn-color-error);
+  padding: 0.65rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  z-index: 10;
+  width: 14rem;
+  border: 1px solid var(--color-dark);
 }

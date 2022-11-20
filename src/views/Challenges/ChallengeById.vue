@@ -1,12 +1,12 @@
 <script setup>
-import { onMounted, onUnmounted, ref, watch } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
-import { useUserStore } from '../../stores/user';
-import { useChallengeStore } from '../../stores/challenges';
-import ChallengeHeader from '../../components/challenge/ChallengeHeader.vue';
-import ChallengeCode from '../../components/challenge/ChallengeCode.vue';
-import ChallengeForm from '../../components/challenge/ChallengeForm.vue';
-import AlertMessage from '../../components/ui/AlertMessage.vue';
+import { onMounted, onUnmounted, ref, watch } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { useUserStore } from "../../stores/user";
+import { useChallengeStore } from "../../stores/challenges";
+import ChallengeHeader from "../../components/challenge/ChallengeHeader.vue";
+import ChallengeCode from "../../components/challenge/ChallengeCode.vue";
+import ChallengeForm from "../../components/challenge/ChallengeForm.vue";
+import AlertMessage from "../../components/ui/AlertMessage.vue";
 
 const challenge = useChallengeStore();
 const user = useUserStore();
@@ -17,20 +17,20 @@ const router = useRouter();
 const isPlaying = ref(true);
 const timer = ref(10);
 
-const message = ref({ type: '', message: '' });
+const message = ref({ type: "", message: "" });
 
-const countDowntimer = () => {
+const countDownTimer = () => {
   if (timer.value > 0 && challenge.challenge && isPlaying.value) {
     setTimeout(() => {
       timer.value--;
-      countDowntimer();
+      countDownTimer();
     }, 1000);
   } else if (timer.value <= 0) {
     isPlaying.value = false;
     timer.value = 0;
 
     message.value = {
-      type: 'error',
+      type: "error",
       message: `The time is over.`,
     };
   }
@@ -48,11 +48,11 @@ onMounted(() => {
     challenge._getChallengeById(route.params.cid);
   }
   // verifica se o usuario esta logado
-  if (!user.isLoggedIn) router.push('/auth');
+  if (!user.isLoggedIn) router.push("/auth");
 
   timer.value = challenge.challenge.duration;
 
-  countDowntimer();
+  countDownTimer();
 });
 
 onUnmounted(() => {
@@ -70,11 +70,11 @@ const saveUserAnswer = (data) => {
     uid: user.user.uid,
     cid: challenge.challenge.id,
     correct,
-    points: correct ? timeLeft * challenge.challenge.difficulty : 0,
+    points: correct ? (timeLeft - 1) * challenge.challenge.difficulty : 0,
   };
 
   message.value = {
-    type: payload.correct ? 'success' : 'error',
+    type: payload.correct ? "success" : "error",
     message: payload.correct
       ? `Congratulations, you got the answer right. You got ${payload.points} points.`
       : `Sorry but the answer is incorrect. You got 0 points`,
@@ -85,6 +85,9 @@ const saveUserAnswer = (data) => {
 </script>
 
 <template>
+  <div class="timer">
+    {{ $t("challenges.timer") }} - {{ timer }} {{ $t("challenges.seconds") }}
+  </div>
   <n-space vertical>
     <n-card :title="challenge.challenge.question" v-if="challenge.challenge">
       <challenge-header

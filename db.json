@@ -3,8 +3,8 @@
     {
       "question": "Qual o objetivo do algoritmo?",
       "description": "Recebe uma string como parâmetro",
-      "duration": 30,
-      "difficulty": 1,
+      "duration": 45,
+      "difficulty": 3,
       "code": "\nfunction xxx(str) {\n\n    let newString = \"\";\n    for (let i = str.length - 1; i >= 0; i--) {\n        newString += str[i];\n    }\n    return newString;\n}\n\nconst string = prompt('Enter a string: ');\n\nconst result = xxx(string);\nconsole.log(result);",
       "correct": "Inverte uma string com For Loop",
       "language": "JAVASCRIPT",
@@ -12,32 +12,32 @@
       "created_at": "2022-11-06T15:13:22.069Z",
       "id": "f31201b4-4ade-4ffd-94d5-7f63e698dc38",
       "answers": [
-        "Inverte uma string com For Loop",
-        "Coverte a primeira letra para maiúscula",
-        "Calcula o tamanho da string"
+        "Inverter uma string com For Loop",
+        "Converter a primeira letra para maiúscula",
+        "Calcular o tamanho da string"
       ]
     },
     {
       "question": "Qual o objetivo do algoritmo?",
       "description": "Recebeu um número e retorna ...",
-      "duration": 30,
+      "duration": 40,
       "difficulty": 2,
       "code": "const number = parseInt(prompt('Enter an integer: '));\n\nfor(let i = 1; i <= 10; i++) {\n    const result = i * number;\n\n    console.log(`${number} * ${i} = ${result}`);\n}",
-      "correct": "Retorna a tabela de multiplicaćão até 10",
+      "correct": "Retorna a tabela de multiplicação até 10",
       "language": "JAVASCRIPT",
       "updated_at": "2022-11-06T15:06:29.267Z",
       "created_at": "2022-11-06T15:06:29.267Z",
       "id": "238ca3e9-4604-4003-9def-f7f651f747ec",
       "answers": [
-        "Retorna a soma do número até 10",
-        "Retorna a tabela de multiplicaćão até 10",
-        "Retorna a tabela do somatório até 10"
+        "Retornar a soma dos números até 10",
+        "Retornar a tabela de multiplicação até 10",
+        "Retornar a tabela do somatório até 10"
       ]
     },
     {
       "question": "Algoritmo que mostra somente números...",
       "description": "Recebe uma faixa de números e mostra somente certos números",
-      "duration": 40,
+      "duration": 50,
       "difficulty": 3,
       "code": "lower = 900\nupper = 1000\n\nprint(\"X numbers between\", lower, \"and\", upper, \"are:\")\n\nfor num in range(lower, upper + 1):\n   if num > 1:\n       for i in range(2, num):\n           if (num % i) == 0:\n               break\n       else:\n           print(num)",
       "correct": "Mostra somente números primos",
@@ -46,18 +46,18 @@
       "created_at": "2022-11-06T14:59:55.685Z",
       "id": "a2c246c5-e6a8-4949-9adb-c44f10ecffbc",
       "answers": [
-        "Mostra somente números primos",
-        "Mostra somente números ímpares",
-        "Mostra a soma dos números no intervalo"
+        "Números primos",
+        "Números ímpares",
+        "Mostrar a soma dos números dentro de um intervalo"
       ]
     },
     {
       "question": "Qual é o objetivo do algoritmo?",
       "description": "Recebe um número e gera um retorno",
-      "duration": 20,
+      "duration": 25,
       "answers": [
-        "Verifica se o número é ímpar ou par",
-        "Verifica se o número é um número primo",
+        "Verificar se o número é ímpar ou par",
+        "Verificar se o número é um número primo",
         "Verificar se o número é do tipo inteiro"
       ],
       "difficulty": 1,
@@ -70,7 +70,7 @@
     },
     {
       "question": "Algoritmo que retorna...",
-      "description": "Algoritmo com 3 váriaveis e um retorno",
+      "description": "Algoritmo com 3 variáveis e um retorno",
       "duration": 20,
       "difficulty": 1,
       "code": "num1 = 10\nnum2 = 14\nnum3 = 12\n\nif (num1 >= num2) and (num1 >= num3):\n   x = num1\nelif (num2 >= num1) and (num2 >= num3):\n   x = num2\nelse:\n   x = num3\n\nprint(\"The X number is\", x)",
@@ -80,15 +80,15 @@
       "created_at": "2022-11-06T14:39:51.449Z",
       "id": "92977a32-0696-4539-b555-ff0379abae4a",
       "answers": [
-        "Encontra o maior entre 3 números",
-        "Encontra a média entre 3 números",
-        "Encontra a soma entre 3 números"
+        "O maior entre 3 números",
+        "A média entre 3 números",
+        "A soma entre 3 números"
       ]
     },
     {
       "question": "Algoritmo que verifica se um número é ...",
       "description": "Algoritmo que utiliza loop, if e else",
-      "duration": 10,
+      "duration": 30,
       "answers": [
         "Verifica se o número é primo",
         "Verifica se o número é ímpar",
