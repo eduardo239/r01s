@@ -14,6 +14,7 @@ import {
 import { useChallengeStore } from "../../stores/challenges";
 import { useRoute, useRouter } from "vue-router";
 import { useUserStore } from "../../stores/user";
+import { RuleTest } from "@vicons/carbon";
 
 const challenge = useChallengeStore();
 const user = useUserStore();
@@ -95,8 +96,11 @@ const goToChallenge = () => {
               :disabled="!user.isLoggedIn"
               >{{
                 !user.isLoggedIn ? $t("auth.required.signin") : $t("form.start")
-              }}</n-button
-            >
+              }}
+              <n-icon size="22" style="margin-left: 10px">
+                <rule-test />
+              </n-icon>
+            </n-button>
             <!-- <n-button
               @click="() => goToChallenge()"
               type="success"

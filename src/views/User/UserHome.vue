@@ -13,6 +13,11 @@ import {
 import { useUserStore } from "../../stores/user";
 import UserStats from "./UserHome.vue";
 import { URI_DEFAULT_AVATAR } from "../../helpers/constants";
+import {
+  DataTable,
+  Edit as TheEdit,
+  Logout as TheLogout,
+} from "@vicons/carbon";
 
 const user = useUserStore();
 </script>
@@ -42,12 +47,18 @@ const user = useUserStore();
 
               <router-link :to="`/profile/${user.user.uid}/stats`">
                 <n-button strong secondary block type="success">
+                  <n-icon size="22" style="margin-right: 10px">
+                    <data-table />
+                  </n-icon>
                   {{ $t("user.menu.stats") }}
                 </n-button>
               </router-link>
 
               <router-link :to="`/profile/${user.user.uid}/edit`">
                 <n-button strong secondary block type="success">
+                  <n-icon size="22" style="margin-right: 10px">
+                    <the-edit />
+                  </n-icon>
                   {{ $t("user.menu.edit") }}
                 </n-button>
               </router-link>
@@ -60,6 +71,9 @@ const user = useUserStore();
                   type="error"
                   @click="user.logOutFirebase"
                 >
+                  <n-icon size="22" style="margin-right: 10px">
+                    <the-logout />
+                  </n-icon>
                   {{ $t("user.menu.exit") }}
                 </n-button>
               </router-link>

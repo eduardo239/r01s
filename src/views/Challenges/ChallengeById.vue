@@ -7,6 +7,7 @@ import ChallengeHeader from "../../components/challenge/ChallengeHeader.vue";
 import ChallengeCode from "../../components/challenge/ChallengeCode.vue";
 import ChallengeForm from "../../components/challenge/ChallengeForm.vue";
 import AlertMessage from "../../components/ui/AlertMessage.vue";
+import { Timer as TheTimer } from "@vicons/carbon";
 
 const challenge = useChallengeStore();
 const user = useUserStore();
@@ -86,6 +87,9 @@ const saveUserAnswer = (data) => {
 
 <template>
   <div class="timer">
+    <n-icon size="22" style="margin-left: 10px">
+      <the-timer />
+    </n-icon>
     {{ $t("challenges.timer") }} - {{ timer }} {{ $t("challenges.seconds") }}
   </div>
   <n-space vertical>

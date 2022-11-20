@@ -130,4 +130,7 @@ a {
   z-index: 10;
   width: 14rem;
   border: 1px solid var(--color-dark);
+  align-items: center;
+  display: flex;
+  gap: 10px;
 }

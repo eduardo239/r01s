@@ -2,6 +2,7 @@
 import { onMounted, ref } from "vue";
 import { NButton, NList, NThing, NListItem, NTag, NPagination } from "naive-ui";
 import { useChallengeStore } from "../../stores/challenges";
+import { ArrowRight } from "@vicons/carbon";
 
 const challenge = useChallengeStore();
 
@@ -59,7 +60,12 @@ function next(pagination) {
       </n-thing>
       <template #suffix>
         <router-link :to="`/challenge-description/${ch.id}`">
-          <n-button type="success">{{ $t("form.view") }}</n-button>
+          <n-button type="success">
+            {{ $t("form.view") }}
+            <n-icon size="22" style="margin-left: 10px">
+              <arrow-right />
+            </n-icon>
+          </n-button>
         </router-link>
       </template>
     </n-list-item>

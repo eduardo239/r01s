@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import { NSpace, NRadioGroup, NRadio, NButton } from "naive-ui";
 import { useRouter } from "vue-router";
+import { Send as SendAlt } from "@vicons/carbon";
 
 const router = useRouter();
 const checked = ref(null);
@@ -49,11 +50,14 @@ const submit = (data) => {
         @click="submit(model)"
       >
         {{ $t("form.save") }}
+        <n-icon size="22" style="margin-left: 10px">
+          <send-alt />
+        </n-icon>
       </n-button>
 
       <n-button :disabled="isPlaying" size="large" @click="() => router.go(-1)">
-        {{ $t("form.back") }}</n-button
-      >
+        {{ $t("form.back") }}
+      </n-button>
     </n-button-group>
   </n-space>
 </template>
